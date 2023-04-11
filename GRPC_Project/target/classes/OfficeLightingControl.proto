@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.OfficeLightingControl";
+option java_outer_classname = "OfficeLightingControlImpl";
+
+package OfficeLightingControl;
+
+service OfficeLightingControlService {
+  rpc SetRoomLighting(RoomLightingRequest) returns (RoomLightingResponse);
+  rpc TimeBasedLightingAutomation(stream LightingSettingsRequest) returns (LightingAutomationResponse);
+  rpc LightingStatusRequest(Empty) returns (stream LightingStatusResponse);
+}
+
+message RoomLightingRequest {
+  enum LightingState {
+    ON = 0;
+    OFF = 1;
+  }
+  string room_id = 1;
+  LightingState state = 2;
+}
+
+message RoomLightingResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message LightingSettingsRequest {
+  int32 hour = 1;
+  int32 minute = 2;
+  bool turn_on = 3;
+}
+
+message LightingAutomationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message Empty {}
+
+message LightingStatusResponse {
+  string room_id = 1;
+  bool is_on = 2;
+}
