@@ -1,17 +1,17 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "ds.OfficeLightingControl";
-option java_outer_classname = "OfficeLightingControlImpl";
+option java_package = "ds.Lighting";
+option java_outer_classname = "LightingImpl";
 
-package OfficeLightingControl;
+package Lighting;
 
-service OfficeLightingControlService {
+service LightingService {
   // Method 1
   rpc SetRoomLighting(RoomLightingRequest) returns (RoomLightingResponse);
 
   // Method 2
-  rpc TimeBasedLightingAutomation(stream LightingSettingsRequest) returns (LightingAutomationResponse);
+  rpc LightingAutomation(stream LightingAutomationRequest) returns (LightingAutomationResponse);
 
   // Method 3
   rpc LightingStatusRequest(Empty) returns (stream LightingStatusResponse);
@@ -31,7 +31,7 @@ message RoomLightingResponse {
   string message = 2;
 }
 
-message LightingSettingsRequest {
+message LightingAutomationRequest {
   int32 hour = 1;
   int32 minute = 2;
   bool turn_on = 3;

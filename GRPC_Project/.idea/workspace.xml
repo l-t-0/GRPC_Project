@@ -6,13 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/RequestMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/RequestMessageOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/ResponseMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/ResponseMessageOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/Service1Grpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/service1/Service1Impl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/service1test.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/OfficeLightingControl.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/Empty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/EmptyOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingAutomationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingAutomationResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingSettingsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingSettingsRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingStatusResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/LightingStatusResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/OfficeLightingControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/OfficeLightingControlImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/OfficeLightingControlServiceGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/RoomLightingRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/RoomLightingRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/RoomLightingResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/OfficeLightingControl/RoomLightingResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/OfficeLightingControl.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Lighting.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/OfficeLightingControl.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/OfficeLightingControl.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
