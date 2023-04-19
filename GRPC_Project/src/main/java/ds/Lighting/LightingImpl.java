@@ -15,15 +15,15 @@ public final class LightingImpl {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Lighting_RoomLightingRequest_descriptor;
+    internal_static_Lighting_SetRoomLightingRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Lighting_RoomLightingRequest_fieldAccessorTable;
+      internal_static_Lighting_SetRoomLightingRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Lighting_RoomLightingResponse_descriptor;
+    internal_static_Lighting_SetRoomLightingResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Lighting_RoomLightingResponse_fieldAccessorTable;
+      internal_static_Lighting_SetRoomLightingResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Lighting_LightingAutomationRequest_descriptor;
   static final 
@@ -53,25 +53,26 @@ public final class LightingImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Lighting.proto\022\010Lighting\"\204\001\n\023RoomLight" +
-      "ingRequest\022\017\n\007room_id\030\001 \001(\t\022:\n\005state\030\002 \001" +
-      "(\0162+.Lighting.RoomLightingRequest.Lighti" +
-      "ngState\" \n\rLightingState\022\006\n\002ON\020\000\022\007\n\003OFF\020" +
-      "\001\"8\n\024RoomLightingResponse\022\017\n\007success\030\001 \001" +
-      "(\010\022\017\n\007message\030\002 \001(\t\"J\n\031LightingAutomatio" +
-      "nRequest\022\014\n\004hour\030\001 \001(\005\022\016\n\006minute\030\002 \001(\005\022\017" +
-      "\n\007turn_on\030\003 \001(\010\">\n\032LightingAutomationRes" +
-      "ponse\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"" +
-      "\007\n\005Empty\"8\n\026LightingStatusResponse\022\017\n\007ro" +
-      "om_id\030\001 \001(\t\022\r\n\005is_on\030\002 \001(\0102\224\002\n\017LightingS" +
-      "ervice\022P\n\017SetRoomLighting\022\035.Lighting.Roo" +
-      "mLightingRequest\032\036.Lighting.RoomLighting" +
-      "Response\022a\n\022LightingAutomation\022#.Lightin" +
-      "g.LightingAutomationRequest\032$.Lighting.L" +
-      "ightingAutomationResponse(\001\022L\n\025LightingS" +
-      "tatusRequest\022\017.Lighting.Empty\032 .Lighting" +
-      ".LightingStatusResponse0\001B\035\n\013ds.Lighting" +
-      "B\014LightingImplP\001b\006proto3"
+      "\n\016Lighting.proto\022\010Lighting\"\212\001\n\026SetRoomLi" +
+      "ghtingRequest\022\017\n\007room_id\030\001 \001(\t\022=\n\005state\030" +
+      "\002 \001(\0162..Lighting.SetRoomLightingRequest." +
+      "LightingState\" \n\rLightingState\022\006\n\002ON\020\000\022\007" +
+      "\n\003OFF\020\001\";\n\027SetRoomLightingResponse\022\017\n\007su" +
+      "ccess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"[\n\031Lighting" +
+      "AutomationRequest\022\017\n\007room_id\030\001 \001(\t\022\014\n\004ho" +
+      "ur\030\002 \001(\005\022\016\n\006minute\030\003 \001(\005\022\017\n\007turn_on\030\004 \001(" +
+      "\010\">\n\032LightingAutomationResponse\022\017\n\007succe" +
+      "ss\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\007\n\005Empty\"8\n\026Li" +
+      "ghtingStatusResponse\022\017\n\007room_id\030\001 \001(\t\022\r\n" +
+      "\005is_on\030\002 \001(\0102\232\002\n\017LightingService\022V\n\017SetR" +
+      "oomLighting\022 .Lighting.SetRoomLightingRe" +
+      "quest\032!.Lighting.SetRoomLightingResponse" +
+      "\022a\n\022LightingAutomation\022#.Lighting.Lighti" +
+      "ngAutomationRequest\032$.Lighting.LightingA" +
+      "utomationResponse(\001\022L\n\025LightingStatusReq" +
+      "uest\022\017.Lighting.Empty\032 .Lighting.Lightin" +
+      "gStatusResponse0\001B\035\n\013ds.LightingB\014Lighti" +
+      "ngImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -85,24 +86,24 @@ public final class LightingImpl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_Lighting_RoomLightingRequest_descriptor =
+    internal_static_Lighting_SetRoomLightingRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Lighting_RoomLightingRequest_fieldAccessorTable = new
+    internal_static_Lighting_SetRoomLightingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Lighting_RoomLightingRequest_descriptor,
+        internal_static_Lighting_SetRoomLightingRequest_descriptor,
         new java.lang.String[] { "RoomId", "State", });
-    internal_static_Lighting_RoomLightingResponse_descriptor =
+    internal_static_Lighting_SetRoomLightingResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_Lighting_RoomLightingResponse_fieldAccessorTable = new
+    internal_static_Lighting_SetRoomLightingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Lighting_RoomLightingResponse_descriptor,
+        internal_static_Lighting_SetRoomLightingResponse_descriptor,
         new java.lang.String[] { "Success", "Message", });
     internal_static_Lighting_LightingAutomationRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Lighting_LightingAutomationRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Lighting_LightingAutomationRequest_descriptor,
-        new java.lang.String[] { "Hour", "Minute", "TurnOn", });
+        new java.lang.String[] { "RoomId", "Hour", "Minute", "TurnOn", });
     internal_static_Lighting_LightingAutomationResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_Lighting_LightingAutomationResponse_fieldAccessorTable = new

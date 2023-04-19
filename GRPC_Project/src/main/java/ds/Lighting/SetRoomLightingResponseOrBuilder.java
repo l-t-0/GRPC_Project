@@ -3,8 +3,8 @@
 
 package ds.Lighting;
 
-public interface RoomLightingResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Lighting.RoomLightingResponse)
+public interface SetRoomLightingResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Lighting.SetRoomLightingResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

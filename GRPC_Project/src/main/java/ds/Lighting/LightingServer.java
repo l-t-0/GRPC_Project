@@ -5,6 +5,7 @@ import java.io.IOException;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import ds.Lighting.LightingServiceGrpc.LightingServiceImplBase;
 
 public class LightingServer extends LightingServiceImplBase{
 
@@ -25,50 +26,68 @@ public class LightingServer extends LightingServiceImplBase{
         server.awaitTermination();
     }
 
-
+    // Method 1
     @Override
-    public void setRoomLighting(RoomLightingRequest request, StreamObserver<RoomLightingResponse> responseObserver) {
-        // Implementation logic to set the lighting of a room based on the request
-        // ...
-        // Send a response back to the client
-        responseObserver.onNext(RoomLightingResponse.newBuilder().build());
+    public void setRoomLighting(SetRoomLightingRequest request, StreamObserver<SetRoomLightingResponse> responseObserver) {
+
+        // Create and set the response message
+        SetRoomLightingResponse response = SetRoomLightingResponse.newBuilder()
+                .setSuccess(true)
+                .setMessage("Lighting set successfully")
+                .build();
+
+        // Send the response back to the client
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
 
+    // Method 2
     @Override
-    public StreamObserver<LightingSettingsRequest> timeBasedLightingAutomation(StreamObserver<TimeBasedLightingResponse> responseObserver) {
-        // Implementation logic to handle a stream of time-based lighting requests from the client
-        // ...
-        // Send a response back to the client
-        responseObserver.onNext(TimeBasedLightingResponse.newBuilder().build());
+    public StreamObserver<LightingAutomationRequest> lightingAutomation(StreamObserver<LightingAutomationResponse> responseObserver) {
+
+        LightingAutomationResponse response = LightingAutomationResponse.newBuilder()
+                .setSuccess(true)
+                .setMessage("Lighting automation set successfully")
+                .build();
+
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
-        return new StreamObserver<TimeBasedLightingRequest>() {
+
+        return new StreamObserver<LightingAutomationRequest>() {
             @Override
-            public void onNext(TimeBasedLightingRequest value) {
-                // Handle each incoming request from the client
-                // ...
+            public void onNext(LightingAutomationRequest value) {
             }
 
             @Override
             public void onError(Throwable t) {
-                // Handle any errors that occur during the streaming process
-                // ...
             }
 
             @Override
             public void onCompleted() {
-                // Handle completion of the streaming process
-                // ...
             }
         };
     }
 
+    // Method 3
     @Override
-    public void lightingStatusRequest(LightingStatusRequest request, StreamObserver<LightingStatusResponse> responseObserver) {
-        // Implementation logic to retrieve the status of all lights in the building
-        // ...
-        // Send a stream of data back to the client
-        responseObserver.onNext(LightingStatusResponse.newBuilder().build());
+    public void lightingStatusRequest(Empty request, StreamObserver<LightingStatusResponse> responseObserver) {
+
+        LightingStatusResponse response1 = LightingStatusResponse.newBuilder()
+                .setRoomId("Room 1")
+                .setIsOn(true)
+                .build();
+
+        LightingStatusResponse response2 = LightingStatusResponse.newBuilder()
+                .setRoomId("Room 2")
+                .setIsOn(false)
+                .build();
+
+        responseObserver.onNext(response1);
+        responseObserver.onNext(response2);
+
         responseObserver.onCompleted();
     }
+
+
+
 }

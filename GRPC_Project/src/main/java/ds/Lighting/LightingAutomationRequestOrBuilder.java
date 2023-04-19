@@ -8,17 +8,27 @@ public interface LightingAutomationRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 hour = 1;</code>
+   * <code>string room_id = 1;</code>
+   */
+  java.lang.String getRoomId();
+  /**
+   * <code>string room_id = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getRoomIdBytes();
+
+  /**
+   * <code>int32 hour = 2;</code>
    */
   int getHour();
 
   /**
-   * <code>int32 minute = 2;</code>
+   * <code>int32 minute = 3;</code>
    */
   int getMinute();
 
   /**
-   * <code>bool turn_on = 3;</code>
+   * <code>bool turn_on = 4;</code>
    */
   boolean getTurnOn();
 }

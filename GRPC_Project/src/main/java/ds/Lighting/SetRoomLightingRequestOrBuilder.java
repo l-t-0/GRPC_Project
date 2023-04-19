@@ -3,8 +3,8 @@
 
 package ds.Lighting;
 
-public interface RoomLightingRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Lighting.RoomLightingRequest)
+public interface SetRoomLightingRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Lighting.SetRoomLightingRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -18,11 +18,11 @@ public interface RoomLightingRequestOrBuilder extends
       getRoomIdBytes();
 
   /**
-   * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
+   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
    */
   int getStateValue();
   /**
-   * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
+   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
    */
-  ds.Lighting.RoomLightingRequest.LightingState getState();
+  ds.Lighting.SetRoomLightingRequest.LightingState getState();
 }

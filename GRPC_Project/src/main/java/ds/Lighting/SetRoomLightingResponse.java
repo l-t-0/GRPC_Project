@@ -4,20 +4,20 @@
 package ds.Lighting;
 
 /**
- * Protobuf type {@code Lighting.RoomLightingRequest}
+ * Protobuf type {@code Lighting.SetRoomLightingResponse}
  */
-public  final class RoomLightingRequest extends
+public  final class SetRoomLightingResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Lighting.RoomLightingRequest)
-    RoomLightingRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:Lighting.SetRoomLightingResponse)
+    SetRoomLightingResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use RoomLightingRequest.newBuilder() to construct.
-  private RoomLightingRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SetRoomLightingResponse.newBuilder() to construct.
+  private SetRoomLightingResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private RoomLightingRequest() {
-    roomId_ = "";
-    state_ = 0;
+  private SetRoomLightingResponse() {
+    success_ = false;
+    message_ = "";
   }
 
   @java.lang.Override
@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private RoomLightingRequest(
+  private SetRoomLightingResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -44,16 +44,15 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            roomId_ = s;
+            success_ = input.readBool();
             break;
           }
-          case 16: {
-            int rawValue = input.readEnum();
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            state_ = rawValue;
+            message_ = s;
             break;
           }
           default: {
@@ -77,164 +76,58 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ds.Lighting.LightingImpl.internal_static_Lighting_RoomLightingRequest_descriptor;
+    return ds.Lighting.LightingImpl.internal_static_Lighting_SetRoomLightingResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ds.Lighting.LightingImpl.internal_static_Lighting_RoomLightingRequest_fieldAccessorTable
+    return ds.Lighting.LightingImpl.internal_static_Lighting_SetRoomLightingResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ds.Lighting.RoomLightingRequest.class, ds.Lighting.RoomLightingRequest.Builder.class);
+            ds.Lighting.SetRoomLightingResponse.class, ds.Lighting.SetRoomLightingResponse.Builder.class);
   }
 
+  public static final int SUCCESS_FIELD_NUMBER = 1;
+  private boolean success_;
   /**
-   * Protobuf enum {@code Lighting.RoomLightingRequest.LightingState}
+   * <code>bool success = 1;</code>
    */
-  public enum LightingState
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ON = 0;</code>
-     */
-    ON(0),
-    /**
-     * <code>OFF = 1;</code>
-     */
-    OFF(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>ON = 0;</code>
-     */
-    public static final int ON_VALUE = 0;
-    /**
-     * <code>OFF = 1;</code>
-     */
-    public static final int OFF_VALUE = 1;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static LightingState valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static LightingState forNumber(int value) {
-      switch (value) {
-        case 0: return ON;
-        case 1: return OFF;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<LightingState>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        LightingState> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<LightingState>() {
-            public LightingState findValueByNumber(int number) {
-              return LightingState.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return ds.Lighting.RoomLightingRequest.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final LightingState[] VALUES = values();
-
-    public static LightingState valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private LightingState(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:Lighting.RoomLightingRequest.LightingState)
+  public boolean getSuccess() {
+    return success_;
   }
 
-  public static final int ROOM_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object roomId_;
+  public static final int MESSAGE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object message_;
   /**
-   * <code>string room_id = 1;</code>
+   * <code>string message = 2;</code>
    */
-  public java.lang.String getRoomId() {
-    java.lang.Object ref = roomId_;
+  public java.lang.String getMessage() {
+    java.lang.Object ref = message_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      roomId_ = s;
+      message_ = s;
       return s;
     }
   }
   /**
-   * <code>string room_id = 1;</code>
+   * <code>string message = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getRoomIdBytes() {
-    java.lang.Object ref = roomId_;
+      getMessageBytes() {
+    java.lang.Object ref = message_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      roomId_ = b;
+      message_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
-  }
-
-  public static final int STATE_FIELD_NUMBER = 2;
-  private int state_;
-  /**
-   * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-   */
-  public int getStateValue() {
-    return state_;
-  }
-  /**
-   * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-   */
-  public ds.Lighting.RoomLightingRequest.LightingState getState() {
-    @SuppressWarnings("deprecation")
-    ds.Lighting.RoomLightingRequest.LightingState result = ds.Lighting.RoomLightingRequest.LightingState.valueOf(state_);
-    return result == null ? ds.Lighting.RoomLightingRequest.LightingState.UNRECOGNIZED : result;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -251,11 +144,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getRoomIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roomId_);
+    if (success_ != false) {
+      output.writeBool(1, success_);
     }
-    if (state_ != ds.Lighting.RoomLightingRequest.LightingState.ON.getNumber()) {
-      output.writeEnum(2, state_);
+    if (!getMessageBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
     }
     unknownFields.writeTo(output);
   }
@@ -266,12 +159,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getRoomIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roomId_);
-    }
-    if (state_ != ds.Lighting.RoomLightingRequest.LightingState.ON.getNumber()) {
+    if (success_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, state_);
+        .computeBoolSize(1, success_);
+    }
+    if (!getMessageBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -283,15 +176,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ds.Lighting.RoomLightingRequest)) {
+    if (!(obj instanceof ds.Lighting.SetRoomLightingResponse)) {
       return super.equals(obj);
     }
-    ds.Lighting.RoomLightingRequest other = (ds.Lighting.RoomLightingRequest) obj;
+    ds.Lighting.SetRoomLightingResponse other = (ds.Lighting.SetRoomLightingResponse) obj;
 
     boolean result = true;
-    result = result && getRoomId()
-        .equals(other.getRoomId());
-    result = result && state_ == other.state_;
+    result = result && (getSuccess()
+        == other.getSuccess());
+    result = result && getMessage()
+        .equals(other.getMessage());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -303,78 +197,79 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ROOM_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getRoomId().hashCode();
-    hash = (37 * hash) + STATE_FIELD_NUMBER;
-    hash = (53 * hash) + state_;
+    hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getSuccess());
+    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getMessage().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(byte[] data)
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(java.io.InputStream input)
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.Lighting.RoomLightingRequest parseDelimitedFrom(java.io.InputStream input)
+  public static ds.Lighting.SetRoomLightingResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ds.Lighting.RoomLightingRequest parseDelimitedFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ds.Lighting.RoomLightingRequest parseFrom(
+  public static ds.Lighting.SetRoomLightingResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -387,7 +282,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ds.Lighting.RoomLightingRequest prototype) {
+  public static Builder newBuilder(ds.Lighting.SetRoomLightingResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -403,26 +298,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code Lighting.RoomLightingRequest}
+   * Protobuf type {@code Lighting.SetRoomLightingResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Lighting.RoomLightingRequest)
-      ds.Lighting.RoomLightingRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Lighting.SetRoomLightingResponse)
+      ds.Lighting.SetRoomLightingResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ds.Lighting.LightingImpl.internal_static_Lighting_RoomLightingRequest_descriptor;
+      return ds.Lighting.LightingImpl.internal_static_Lighting_SetRoomLightingResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ds.Lighting.LightingImpl.internal_static_Lighting_RoomLightingRequest_fieldAccessorTable
+      return ds.Lighting.LightingImpl.internal_static_Lighting_SetRoomLightingResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ds.Lighting.RoomLightingRequest.class, ds.Lighting.RoomLightingRequest.Builder.class);
+              ds.Lighting.SetRoomLightingResponse.class, ds.Lighting.SetRoomLightingResponse.Builder.class);
     }
 
-    // Construct using ds.Lighting.RoomLightingRequest.newBuilder()
+    // Construct using ds.Lighting.SetRoomLightingResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -440,9 +335,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      roomId_ = "";
+      success_ = false;
 
-      state_ = 0;
+      message_ = "";
 
       return this;
     }
@@ -450,17 +345,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ds.Lighting.LightingImpl.internal_static_Lighting_RoomLightingRequest_descriptor;
+      return ds.Lighting.LightingImpl.internal_static_Lighting_SetRoomLightingResponse_descriptor;
     }
 
     @java.lang.Override
-    public ds.Lighting.RoomLightingRequest getDefaultInstanceForType() {
-      return ds.Lighting.RoomLightingRequest.getDefaultInstance();
+    public ds.Lighting.SetRoomLightingResponse getDefaultInstanceForType() {
+      return ds.Lighting.SetRoomLightingResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ds.Lighting.RoomLightingRequest build() {
-      ds.Lighting.RoomLightingRequest result = buildPartial();
+    public ds.Lighting.SetRoomLightingResponse build() {
+      ds.Lighting.SetRoomLightingResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -468,10 +363,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ds.Lighting.RoomLightingRequest buildPartial() {
-      ds.Lighting.RoomLightingRequest result = new ds.Lighting.RoomLightingRequest(this);
-      result.roomId_ = roomId_;
-      result.state_ = state_;
+    public ds.Lighting.SetRoomLightingResponse buildPartial() {
+      ds.Lighting.SetRoomLightingResponse result = new ds.Lighting.SetRoomLightingResponse(this);
+      result.success_ = success_;
+      result.message_ = message_;
       onBuilt();
       return result;
     }
@@ -510,22 +405,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ds.Lighting.RoomLightingRequest) {
-        return mergeFrom((ds.Lighting.RoomLightingRequest)other);
+      if (other instanceof ds.Lighting.SetRoomLightingResponse) {
+        return mergeFrom((ds.Lighting.SetRoomLightingResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ds.Lighting.RoomLightingRequest other) {
-      if (other == ds.Lighting.RoomLightingRequest.getDefaultInstance()) return this;
-      if (!other.getRoomId().isEmpty()) {
-        roomId_ = other.roomId_;
-        onChanged();
+    public Builder mergeFrom(ds.Lighting.SetRoomLightingResponse other) {
+      if (other == ds.Lighting.SetRoomLightingResponse.getDefaultInstance()) return this;
+      if (other.getSuccess() != false) {
+        setSuccess(other.getSuccess());
       }
-      if (other.state_ != 0) {
-        setStateValue(other.getStateValue());
+      if (!other.getMessage().isEmpty()) {
+        message_ = other.message_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -542,11 +437,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ds.Lighting.RoomLightingRequest parsedMessage = null;
+      ds.Lighting.SetRoomLightingResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ds.Lighting.RoomLightingRequest) e.getUnfinishedMessage();
+        parsedMessage = (ds.Lighting.SetRoomLightingResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -556,116 +451,97 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object roomId_ = "";
+    private boolean success_ ;
     /**
-     * <code>string room_id = 1;</code>
+     * <code>bool success = 1;</code>
      */
-    public java.lang.String getRoomId() {
-      java.lang.Object ref = roomId_;
+    public boolean getSuccess() {
+      return success_;
+    }
+    /**
+     * <code>bool success = 1;</code>
+     */
+    public Builder setSuccess(boolean value) {
+      
+      success_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool success = 1;</code>
+     */
+    public Builder clearSuccess() {
+      
+      success_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object message_ = "";
+    /**
+     * <code>string message = 2;</code>
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        roomId_ = s;
+        message_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>string message = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getRoomIdBytes() {
-      java.lang.Object ref = roomId_;
+        getMessageBytes() {
+      java.lang.Object ref = message_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        roomId_ = b;
+        message_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder setRoomId(
+    public Builder setMessage(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      roomId_ = value;
+      message_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder clearRoomId() {
+    public Builder clearMessage() {
       
-      roomId_ = getDefaultInstance().getRoomId();
+      message_ = getDefaultInstance().getMessage();
       onChanged();
       return this;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>string message = 2;</code>
      */
-    public Builder setRoomIdBytes(
+    public Builder setMessageBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      roomId_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int state_ = 0;
-    /**
-     * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-     */
-    public int getStateValue() {
-      return state_;
-    }
-    /**
-     * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-     */
-    public Builder setStateValue(int value) {
-      state_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-     */
-    public ds.Lighting.RoomLightingRequest.LightingState getState() {
-      @SuppressWarnings("deprecation")
-      ds.Lighting.RoomLightingRequest.LightingState result = ds.Lighting.RoomLightingRequest.LightingState.valueOf(state_);
-      return result == null ? ds.Lighting.RoomLightingRequest.LightingState.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-     */
-    public Builder setState(ds.Lighting.RoomLightingRequest.LightingState value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
-      state_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.Lighting.RoomLightingRequest.LightingState state = 2;</code>
-     */
-    public Builder clearState() {
-      
-      state_ = 0;
+      message_ = value;
       onChanged();
       return this;
     }
@@ -682,41 +558,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Lighting.RoomLightingRequest)
+    // @@protoc_insertion_point(builder_scope:Lighting.SetRoomLightingResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:Lighting.RoomLightingRequest)
-  private static final ds.Lighting.RoomLightingRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Lighting.SetRoomLightingResponse)
+  private static final ds.Lighting.SetRoomLightingResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ds.Lighting.RoomLightingRequest();
+    DEFAULT_INSTANCE = new ds.Lighting.SetRoomLightingResponse();
   }
 
-  public static ds.Lighting.RoomLightingRequest getDefaultInstance() {
+  public static ds.Lighting.SetRoomLightingResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RoomLightingRequest>
-      PARSER = new com.google.protobuf.AbstractParser<RoomLightingRequest>() {
+  private static final com.google.protobuf.Parser<SetRoomLightingResponse>
+      PARSER = new com.google.protobuf.AbstractParser<SetRoomLightingResponse>() {
     @java.lang.Override
-    public RoomLightingRequest parsePartialFrom(
+    public SetRoomLightingResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new RoomLightingRequest(input, extensionRegistry);
+      return new SetRoomLightingResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<RoomLightingRequest> parser() {
+  public static com.google.protobuf.Parser<SetRoomLightingResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RoomLightingRequest> getParserForType() {
+  public com.google.protobuf.Parser<SetRoomLightingResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ds.Lighting.RoomLightingRequest getDefaultInstanceForType() {
+  public ds.Lighting.SetRoomLightingResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

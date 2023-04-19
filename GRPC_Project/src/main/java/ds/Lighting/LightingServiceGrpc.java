@@ -27,30 +27,30 @@ public final class LightingServiceGrpc {
   public static final String SERVICE_NAME = "Lighting.LightingService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.Lighting.RoomLightingRequest,
-      ds.Lighting.RoomLightingResponse> getSetRoomLightingMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.Lighting.SetRoomLightingRequest,
+      ds.Lighting.SetRoomLightingResponse> getSetRoomLightingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SetRoomLighting",
-      requestType = ds.Lighting.RoomLightingRequest.class,
-      responseType = ds.Lighting.RoomLightingResponse.class,
+      requestType = ds.Lighting.SetRoomLightingRequest.class,
+      responseType = ds.Lighting.SetRoomLightingResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.Lighting.RoomLightingRequest,
-      ds.Lighting.RoomLightingResponse> getSetRoomLightingMethod() {
-    io.grpc.MethodDescriptor<ds.Lighting.RoomLightingRequest, ds.Lighting.RoomLightingResponse> getSetRoomLightingMethod;
+  public static io.grpc.MethodDescriptor<ds.Lighting.SetRoomLightingRequest,
+      ds.Lighting.SetRoomLightingResponse> getSetRoomLightingMethod() {
+    io.grpc.MethodDescriptor<ds.Lighting.SetRoomLightingRequest, ds.Lighting.SetRoomLightingResponse> getSetRoomLightingMethod;
     if ((getSetRoomLightingMethod = LightingServiceGrpc.getSetRoomLightingMethod) == null) {
       synchronized (LightingServiceGrpc.class) {
         if ((getSetRoomLightingMethod = LightingServiceGrpc.getSetRoomLightingMethod) == null) {
           LightingServiceGrpc.getSetRoomLightingMethod = getSetRoomLightingMethod = 
-              io.grpc.MethodDescriptor.<ds.Lighting.RoomLightingRequest, ds.Lighting.RoomLightingResponse>newBuilder()
+              io.grpc.MethodDescriptor.<ds.Lighting.SetRoomLightingRequest, ds.Lighting.SetRoomLightingResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Lighting.LightingService", "SetRoomLighting"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.Lighting.RoomLightingRequest.getDefaultInstance()))
+                  ds.Lighting.SetRoomLightingRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.Lighting.RoomLightingResponse.getDefaultInstance()))
+                  ds.Lighting.SetRoomLightingResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new LightingServiceMethodDescriptorSupplier("SetRoomLighting"))
                   .build();
           }
@@ -153,16 +153,18 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 1
+     * Single Room Set Lighting
      * </pre>
      */
-    public void setRoomLighting(ds.Lighting.RoomLightingRequest request,
-        io.grpc.stub.StreamObserver<ds.Lighting.RoomLightingResponse> responseObserver) {
+    public void setRoomLighting(ds.Lighting.SetRoomLightingRequest request,
+        io.grpc.stub.StreamObserver<ds.Lighting.SetRoomLightingResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getSetRoomLightingMethod(), responseObserver);
     }
 
     /**
      * <pre>
      * Method 2
+     * Automate Lighting time based
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.Lighting.LightingAutomationRequest> lightingAutomation(
@@ -173,6 +175,7 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 3
+     * Checks to see if light is on or off
      * </pre>
      */
     public void lightingStatusRequest(ds.Lighting.Empty request,
@@ -186,8 +189,8 @@ public final class LightingServiceGrpc {
             getSetRoomLightingMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ds.Lighting.RoomLightingRequest,
-                ds.Lighting.RoomLightingResponse>(
+                ds.Lighting.SetRoomLightingRequest,
+                ds.Lighting.SetRoomLightingResponse>(
                   this, METHODID_SET_ROOM_LIGHTING)))
           .addMethod(
             getLightingAutomationMethod(),
@@ -228,10 +231,11 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 1
+     * Single Room Set Lighting
      * </pre>
      */
-    public void setRoomLighting(ds.Lighting.RoomLightingRequest request,
-        io.grpc.stub.StreamObserver<ds.Lighting.RoomLightingResponse> responseObserver) {
+    public void setRoomLighting(ds.Lighting.SetRoomLightingRequest request,
+        io.grpc.stub.StreamObserver<ds.Lighting.SetRoomLightingResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSetRoomLightingMethod(), getCallOptions()), request, responseObserver);
     }
@@ -239,6 +243,7 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 2
+     * Automate Lighting time based
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.Lighting.LightingAutomationRequest> lightingAutomation(
@@ -250,6 +255,7 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 3
+     * Checks to see if light is on or off
      * </pre>
      */
     public void lightingStatusRequest(ds.Lighting.Empty request,
@@ -280,9 +286,10 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 1
+     * Single Room Set Lighting
      * </pre>
      */
-    public ds.Lighting.RoomLightingResponse setRoomLighting(ds.Lighting.RoomLightingRequest request) {
+    public ds.Lighting.SetRoomLightingResponse setRoomLighting(ds.Lighting.SetRoomLightingRequest request) {
       return blockingUnaryCall(
           getChannel(), getSetRoomLightingMethod(), getCallOptions(), request);
     }
@@ -290,6 +297,7 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 3
+     * Checks to see if light is on or off
      * </pre>
      */
     public java.util.Iterator<ds.Lighting.LightingStatusResponse> lightingStatusRequest(
@@ -320,10 +328,11 @@ public final class LightingServiceGrpc {
     /**
      * <pre>
      * Method 1
+     * Single Room Set Lighting
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<ds.Lighting.RoomLightingResponse> setRoomLighting(
-        ds.Lighting.RoomLightingRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.Lighting.SetRoomLightingResponse> setRoomLighting(
+        ds.Lighting.SetRoomLightingRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getSetRoomLightingMethod(), getCallOptions()), request);
     }
@@ -351,8 +360,8 @@ public final class LightingServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SET_ROOM_LIGHTING:
-          serviceImpl.setRoomLighting((ds.Lighting.RoomLightingRequest) request,
-              (io.grpc.stub.StreamObserver<ds.Lighting.RoomLightingResponse>) responseObserver);
+          serviceImpl.setRoomLighting((ds.Lighting.SetRoomLightingRequest) request,
+              (io.grpc.stub.StreamObserver<ds.Lighting.SetRoomLightingResponse>) responseObserver);
           break;
         case METHODID_LIGHTING_STATUS_REQUEST:
           serviceImpl.lightingStatusRequest((ds.Lighting.Empty) request,
