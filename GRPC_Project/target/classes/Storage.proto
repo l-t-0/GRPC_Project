@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.Storage";
+option java_outer_classname = "StorageImpl";
+
+package Storage;
+
+service Storage {
+  // Method for uploading multiple files
+  rpc UploadFiles(stream FileUploadRequest) returns (stream FileUploadResponse) {}
+
+  // Method for downloading multiple files
+  rpc DownloadFiles(stream FileDownloadRequest) returns (stream FileDownloadResponse) {}
+
+  // Method for deleting a single file
+  rpc DeleteFile(FileDeleteRequest) returns (FileDeleteResponse) {}
+
+  // Method for requesting the uploaded file list
+  rpc RequestFileList(Empty) returns (FileListResponse) {}
+}
+
+message Empty {}
+
+message FileUploadRequest {
+  // Filename of the file being uploaded
+  string filename = 1;
+  // Content of the file being uploaded
+  int32 content = 2;
+}
+
+message FileUploadResponse {
+  // ID of the uploaded file
+  int32 file_id = 1;
+  // Message indicating if the upload was successful
+  string message = 2;
+}
+
+message FileDownloadRequest {
+  // ID of the file being requested for download
+  int32 file_id = 1;
+}
+
+message FileDownloadResponse {
+  // Filename of the downloaded file
+  string filename = 1;
+
+  // Content of the downloaded file
+  int32 content = 2;
+
+  // Message indicating if the download was successful
+  string message = 3;
+}
+
+message FileDeleteRequest {
+  // ID of the file being deleted
+  int32 file_id = 1;
+}
+
+message FileDeleteResponse {
+  // Message indicating if the deletion was successful
+  string message = 1;
+}
+
+message FileListResponse {
+  // List of uploaded file names
+  string filenames = 1;
+}

@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private SetRoomLightingRequest() {
-    roomId_ = "";
-    state_ = 0;
+    roomId_ = 0;
+    isOn_ = false;
   }
 
   @java.lang.Override
@@ -44,16 +44,14 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            roomId_ = s;
+            roomId_ = input.readInt32();
             break;
           }
           case 16: {
-            int rawValue = input.readEnum();
 
-            state_ = rawValue;
+            isOn_ = input.readBool();
             break;
           }
           default: {
@@ -88,153 +86,22 @@ private static final long serialVersionUID = 0L;
             ds.Lighting.SetRoomLightingRequest.class, ds.Lighting.SetRoomLightingRequest.Builder.class);
   }
 
-  /**
-   * Protobuf enum {@code Lighting.SetRoomLightingRequest.LightingState}
-   */
-  public enum LightingState
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ON = 0;</code>
-     */
-    ON(0),
-    /**
-     * <code>OFF = 1;</code>
-     */
-    OFF(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>ON = 0;</code>
-     */
-    public static final int ON_VALUE = 0;
-    /**
-     * <code>OFF = 1;</code>
-     */
-    public static final int OFF_VALUE = 1;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static LightingState valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static LightingState forNumber(int value) {
-      switch (value) {
-        case 0: return ON;
-        case 1: return OFF;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<LightingState>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        LightingState> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<LightingState>() {
-            public LightingState findValueByNumber(int number) {
-              return LightingState.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return ds.Lighting.SetRoomLightingRequest.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final LightingState[] VALUES = values();
-
-    public static LightingState valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private LightingState(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:Lighting.SetRoomLightingRequest.LightingState)
-  }
-
   public static final int ROOM_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object roomId_;
+  private int roomId_;
   /**
-   * <code>string room_id = 1;</code>
+   * <code>int32 room_id = 1;</code>
    */
-  public java.lang.String getRoomId() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      roomId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string room_id = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getRoomIdBytes() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      roomId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getRoomId() {
+    return roomId_;
   }
 
-  public static final int STATE_FIELD_NUMBER = 2;
-  private int state_;
+  public static final int IS_ON_FIELD_NUMBER = 2;
+  private boolean isOn_;
   /**
-   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
+   * <code>bool is_on = 2;</code>
    */
-  public int getStateValue() {
-    return state_;
-  }
-  /**
-   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
-   */
-  public ds.Lighting.SetRoomLightingRequest.LightingState getState() {
-    @SuppressWarnings("deprecation")
-    ds.Lighting.SetRoomLightingRequest.LightingState result = ds.Lighting.SetRoomLightingRequest.LightingState.valueOf(state_);
-    return result == null ? ds.Lighting.SetRoomLightingRequest.LightingState.UNRECOGNIZED : result;
+  public boolean getIsOn() {
+    return isOn_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -251,11 +118,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getRoomIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roomId_);
+    if (roomId_ != 0) {
+      output.writeInt32(1, roomId_);
     }
-    if (state_ != ds.Lighting.SetRoomLightingRequest.LightingState.ON.getNumber()) {
-      output.writeEnum(2, state_);
+    if (isOn_ != false) {
+      output.writeBool(2, isOn_);
     }
     unknownFields.writeTo(output);
   }
@@ -266,12 +133,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getRoomIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roomId_);
-    }
-    if (state_ != ds.Lighting.SetRoomLightingRequest.LightingState.ON.getNumber()) {
+    if (roomId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, state_);
+        .computeInt32Size(1, roomId_);
+    }
+    if (isOn_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, isOn_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -289,9 +157,10 @@ private static final long serialVersionUID = 0L;
     ds.Lighting.SetRoomLightingRequest other = (ds.Lighting.SetRoomLightingRequest) obj;
 
     boolean result = true;
-    result = result && getRoomId()
-        .equals(other.getRoomId());
-    result = result && state_ == other.state_;
+    result = result && (getRoomId()
+        == other.getRoomId());
+    result = result && (getIsOn()
+        == other.getIsOn());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -304,9 +173,10 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ROOM_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getRoomId().hashCode();
-    hash = (37 * hash) + STATE_FIELD_NUMBER;
-    hash = (53 * hash) + state_;
+    hash = (53 * hash) + getRoomId();
+    hash = (37 * hash) + IS_ON_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsOn());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -440,9 +310,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      roomId_ = "";
+      roomId_ = 0;
 
-      state_ = 0;
+      isOn_ = false;
 
       return this;
     }
@@ -471,7 +341,7 @@ private static final long serialVersionUID = 0L;
     public ds.Lighting.SetRoomLightingRequest buildPartial() {
       ds.Lighting.SetRoomLightingRequest result = new ds.Lighting.SetRoomLightingRequest(this);
       result.roomId_ = roomId_;
-      result.state_ = state_;
+      result.isOn_ = isOn_;
       onBuilt();
       return result;
     }
@@ -520,12 +390,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Lighting.SetRoomLightingRequest other) {
       if (other == ds.Lighting.SetRoomLightingRequest.getDefaultInstance()) return this;
-      if (!other.getRoomId().isEmpty()) {
-        roomId_ = other.roomId_;
-        onChanged();
+      if (other.getRoomId() != 0) {
+        setRoomId(other.getRoomId());
       }
-      if (other.state_ != 0) {
-        setStateValue(other.getStateValue());
+      if (other.getIsOn() != false) {
+        setIsOn(other.getIsOn());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -556,116 +425,54 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object roomId_ = "";
+    private int roomId_ ;
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public java.lang.String getRoomId() {
-      java.lang.Object ref = roomId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        roomId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getRoomId() {
+      return roomId_;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getRoomIdBytes() {
-      java.lang.Object ref = roomId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        roomId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setRoomId(int value) {
+      
       roomId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
     public Builder clearRoomId() {
       
-      roomId_ = getDefaultInstance().getRoomId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      roomId_ = value;
+      roomId_ = 0;
       onChanged();
       return this;
     }
 
-    private int state_ = 0;
+    private boolean isOn_ ;
     /**
-     * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
+     * <code>bool is_on = 2;</code>
      */
-    public int getStateValue() {
-      return state_;
+    public boolean getIsOn() {
+      return isOn_;
     }
     /**
-     * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
+     * <code>bool is_on = 2;</code>
      */
-    public Builder setStateValue(int value) {
-      state_ = value;
+    public Builder setIsOn(boolean value) {
+      
+      isOn_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
+     * <code>bool is_on = 2;</code>
      */
-    public ds.Lighting.SetRoomLightingRequest.LightingState getState() {
-      @SuppressWarnings("deprecation")
-      ds.Lighting.SetRoomLightingRequest.LightingState result = ds.Lighting.SetRoomLightingRequest.LightingState.valueOf(state_);
-      return result == null ? ds.Lighting.SetRoomLightingRequest.LightingState.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
-     */
-    public Builder setState(ds.Lighting.SetRoomLightingRequest.LightingState value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder clearIsOn() {
       
-      state_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
-     */
-    public Builder clearState() {
-      
-      state_ = 0;
+      isOn_ = false;
       onChanged();
       return this;
     }

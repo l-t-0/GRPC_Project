@@ -5,10 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/Empty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/EmptyOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponseOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServiceGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Lighting.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Lighting.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Lighting.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Lighting.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequestOrBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$LightingState$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$LightingState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequestOrBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +81,7 @@
   <component name="RunManager" selected="Application.LightingClient">
     <configuration name="LightingClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingClient" />
-      <module name="SampleProject" />
+      <module name="GRPC_Project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ds.Lighting.*" />
@@ -63,7 +94,7 @@
     </configuration>
     <configuration name="LightingServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingServer" />
-      <module name="SampleProject" />
+      <module name="GRPC_Project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ds.Lighting.*" />

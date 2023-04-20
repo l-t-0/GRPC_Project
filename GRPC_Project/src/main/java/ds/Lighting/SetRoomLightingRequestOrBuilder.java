@@ -8,21 +8,12 @@ public interface SetRoomLightingRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string room_id = 1;</code>
+   * <code>int32 room_id = 1;</code>
    */
-  java.lang.String getRoomId();
-  /**
-   * <code>string room_id = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getRoomIdBytes();
+  int getRoomId();
 
   /**
-   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
+   * <code>bool is_on = 2;</code>
    */
-  int getStateValue();
-  /**
-   * <code>.Lighting.SetRoomLightingRequest.LightingState state = 2;</code>
-   */
-  ds.Lighting.SetRoomLightingRequest.LightingState getState();
+  boolean getIsOn();
 }

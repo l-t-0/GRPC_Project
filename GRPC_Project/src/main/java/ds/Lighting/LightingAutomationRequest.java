@@ -16,9 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LightingAutomationRequest() {
-    roomId_ = "";
+    roomId_ = 0;
     hour_ = 0;
-    minute_ = 0;
     turnOn_ = false;
   }
 
@@ -46,10 +45,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            roomId_ = s;
+            roomId_ = input.readInt32();
             break;
           }
           case 16: {
@@ -58,11 +56,6 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 24: {
-
-            minute_ = input.readInt32();
-            break;
-          }
-          case 32: {
 
             turnOn_ = input.readBool();
             break;
@@ -100,37 +93,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ROOM_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object roomId_;
+  private int roomId_;
   /**
-   * <code>string room_id = 1;</code>
+   * <code>int32 room_id = 1;</code>
    */
-  public java.lang.String getRoomId() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      roomId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string room_id = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getRoomIdBytes() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      roomId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getRoomId() {
+    return roomId_;
   }
 
   public static final int HOUR_FIELD_NUMBER = 2;
@@ -142,19 +110,10 @@ private static final long serialVersionUID = 0L;
     return hour_;
   }
 
-  public static final int MINUTE_FIELD_NUMBER = 3;
-  private int minute_;
-  /**
-   * <code>int32 minute = 3;</code>
-   */
-  public int getMinute() {
-    return minute_;
-  }
-
-  public static final int TURN_ON_FIELD_NUMBER = 4;
+  public static final int TURN_ON_FIELD_NUMBER = 3;
   private boolean turnOn_;
   /**
-   * <code>bool turn_on = 4;</code>
+   * <code>bool turn_on = 3;</code>
    */
   public boolean getTurnOn() {
     return turnOn_;
@@ -174,17 +133,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getRoomIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roomId_);
+    if (roomId_ != 0) {
+      output.writeInt32(1, roomId_);
     }
     if (hour_ != 0) {
       output.writeInt32(2, hour_);
     }
-    if (minute_ != 0) {
-      output.writeInt32(3, minute_);
-    }
     if (turnOn_ != false) {
-      output.writeBool(4, turnOn_);
+      output.writeBool(3, turnOn_);
     }
     unknownFields.writeTo(output);
   }
@@ -195,20 +151,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getRoomIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roomId_);
+    if (roomId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, roomId_);
     }
     if (hour_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, hour_);
     }
-    if (minute_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, minute_);
-    }
     if (turnOn_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(4, turnOn_);
+        .computeBoolSize(3, turnOn_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -226,12 +179,10 @@ private static final long serialVersionUID = 0L;
     ds.Lighting.LightingAutomationRequest other = (ds.Lighting.LightingAutomationRequest) obj;
 
     boolean result = true;
-    result = result && getRoomId()
-        .equals(other.getRoomId());
+    result = result && (getRoomId()
+        == other.getRoomId());
     result = result && (getHour()
         == other.getHour());
-    result = result && (getMinute()
-        == other.getMinute());
     result = result && (getTurnOn()
         == other.getTurnOn());
     result = result && unknownFields.equals(other.unknownFields);
@@ -246,11 +197,9 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ROOM_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getRoomId().hashCode();
+    hash = (53 * hash) + getRoomId();
     hash = (37 * hash) + HOUR_FIELD_NUMBER;
     hash = (53 * hash) + getHour();
-    hash = (37 * hash) + MINUTE_FIELD_NUMBER;
-    hash = (53 * hash) + getMinute();
     hash = (37 * hash) + TURN_ON_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getTurnOn());
@@ -387,11 +336,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      roomId_ = "";
+      roomId_ = 0;
 
       hour_ = 0;
-
-      minute_ = 0;
 
       turnOn_ = false;
 
@@ -423,7 +370,6 @@ private static final long serialVersionUID = 0L;
       ds.Lighting.LightingAutomationRequest result = new ds.Lighting.LightingAutomationRequest(this);
       result.roomId_ = roomId_;
       result.hour_ = hour_;
-      result.minute_ = minute_;
       result.turnOn_ = turnOn_;
       onBuilt();
       return result;
@@ -473,15 +419,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Lighting.LightingAutomationRequest other) {
       if (other == ds.Lighting.LightingAutomationRequest.getDefaultInstance()) return this;
-      if (!other.getRoomId().isEmpty()) {
-        roomId_ = other.roomId_;
-        onChanged();
+      if (other.getRoomId() != 0) {
+        setRoomId(other.getRoomId());
       }
       if (other.getHour() != 0) {
         setHour(other.getHour());
-      }
-      if (other.getMinute() != 0) {
-        setMinute(other.getMinute());
       }
       if (other.getTurnOn() != false) {
         setTurnOn(other.getTurnOn());
@@ -515,71 +457,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object roomId_ = "";
+    private int roomId_ ;
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public java.lang.String getRoomId() {
-      java.lang.Object ref = roomId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        roomId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getRoomId() {
+      return roomId_;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getRoomIdBytes() {
-      java.lang.Object ref = roomId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        roomId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setRoomId(int value) {
+      
       roomId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
     public Builder clearRoomId() {
       
-      roomId_ = getDefaultInstance().getRoomId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      roomId_ = value;
+      roomId_ = 0;
       onChanged();
       return this;
     }
@@ -610,41 +509,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int minute_ ;
-    /**
-     * <code>int32 minute = 3;</code>
-     */
-    public int getMinute() {
-      return minute_;
-    }
-    /**
-     * <code>int32 minute = 3;</code>
-     */
-    public Builder setMinute(int value) {
-      
-      minute_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 minute = 3;</code>
-     */
-    public Builder clearMinute() {
-      
-      minute_ = 0;
-      onChanged();
-      return this;
-    }
-
     private boolean turnOn_ ;
     /**
-     * <code>bool turn_on = 4;</code>
+     * <code>bool turn_on = 3;</code>
      */
     public boolean getTurnOn() {
       return turnOn_;
     }
     /**
-     * <code>bool turn_on = 4;</code>
+     * <code>bool turn_on = 3;</code>
      */
     public Builder setTurnOn(boolean value) {
       
@@ -653,7 +526,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bool turn_on = 4;</code>
+     * <code>bool turn_on = 3;</code>
      */
     public Builder clearTurnOn() {
       

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.Temperature";
+option java_outer_classname = "TemperatureImpl";
+
+package Temperature;
+
+service Temperature {
+  // Method 1
+  // Temperature Readout Request
+  rpc TemperatureReadoutRequest(Empty) returns (stream TemperatureReadoutResponse);
+
+  // Method 2
+  // Time Based Temperature Automation
+  rpc TemperatureAutomation(stream TemperatureAutomationRequest) returns (TemperatureAutomationResponse);
+
+  // Method 3
+  // Set Room Temperature
+  rpc SetRoomTemperature(SetRoomTemperatureRequest) returns (SetRoomTemperatureResponse);
+}
+
+message Empty {}
+
+message TemperatureReadoutResponse {
+  int32 room_id = 1;
+  float temperature = 2;
+}
+
+message TemperatureAutomationRequest {
+  int32 room_id = 1;
+  int32 hour = 2;
+  float temperature = 3;
+}
+
+message TemperatureAutomationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SetRoomTemperatureRequest {
+  int32 room_id = 1;
+  float temperature = 2;
+}
+
+message SetRoomTemperatureResponse {
+  bool success = 1;
+  string message = 2;
+}
