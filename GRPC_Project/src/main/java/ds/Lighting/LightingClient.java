@@ -24,7 +24,7 @@ public class LightingClient {
 
 
     public static void main(String[] args) throws Exception {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
 
         //stubs -- generate from proto
         blockingStub = LightingServiceGrpc.newBlockingStub(channel);
@@ -43,12 +43,15 @@ public class LightingClient {
             Iterator<LightingStatusResponse> response = blockingStub.lightingStatusRequest(request);
 
             while(response.hasNext()) {
+                String s = "";
                 LightingStatusResponse temp = response.next();
-                System.out.println("Room no. :");
-                System.out.println(temp.getRoomId());
-                System.out.println("Is it on? :");
-                System.out.println(temp.getIsOn());
-
+                s += temp.getRoomId() + " lights are ";
+                if(temp.getIsOn()) {
+                    s += "on.";
+                } else {
+                    s+= "off.";
+                }
+                System.out.println(s);
             }
 
         } catch (StatusRuntimeException e) {

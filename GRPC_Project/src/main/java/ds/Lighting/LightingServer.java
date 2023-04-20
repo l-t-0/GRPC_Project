@@ -6,6 +6,11 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import ds.Lighting.LightingServiceGrpc.LightingServiceImplBase;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 
 public class LightingServer extends LightingServiceImplBase{
 
@@ -72,18 +77,16 @@ public class LightingServer extends LightingServiceImplBase{
     @Override
     public void lightingStatusRequest(Empty request, StreamObserver<LightingStatusResponse> responseObserver) {
 
-        LightingStatusResponse response1 = LightingStatusResponse.newBuilder()
-                .setRoomId("Room 1")
-                .setIsOn(true)
-                .build();
+        List<Integer> roomIds = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Random rd = new Random();
 
-        LightingStatusResponse response2 = LightingStatusResponse.newBuilder()
-                .setRoomId("Room 2")
-                .setIsOn(false)
-                .build();
-
-        responseObserver.onNext(response1);
-        responseObserver.onNext(response2);
+        for (int i = 0; i < roomIds.size(); i++) {
+            LightingStatusResponse response = LightingStatusResponse.newBuilder()
+                    .setRoomId("Room " + roomIds.get(i))
+                    .setIsOn(rd.nextBoolean())
+                    .build();
+            responseObserver.onNext(response);
+        }
 
         responseObserver.onCompleted();
     }
