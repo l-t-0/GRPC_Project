@@ -50,9 +50,7 @@ public class TemperatureClient {
             Iterator<TemperatureReadoutResponse> response = blockingStub.temperatureReadoutRequest(request);
 
             while(response.hasNext()) {
-                String s = "";
                 TemperatureReadoutResponse temporary = response.next();
-                s += "Room " + temporary.getRoomId() + " lights are ";
                 System.out.println("The temperature in room " + temporary.getRoomId() + " is " + temporary.getTemperature() + "°C");
             }
 
