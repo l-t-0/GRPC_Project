@@ -60,9 +60,13 @@ message FileDeleteRequest {
 message FileDeleteResponse {
   // Message indicating if the deletion was successful
   string message = 1;
+  bool success = 2;
 }
 
 message FileListResponse {
   // List of uploaded file names
-  string filenames = 1;
+  int32 file_id = 1;
+  string filename = 2;
+  int32 content = 3;
+
 }

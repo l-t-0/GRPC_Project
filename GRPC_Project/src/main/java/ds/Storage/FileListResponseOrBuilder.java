@@ -12,16 +12,22 @@ public interface FileListResponseOrBuilder extends
    * List of uploaded file names
    * </pre>
    *
-   * <code>string filenames = 1;</code>
+   * <code>int32 file_id = 1;</code>
    */
-  java.lang.String getFilenames();
+  int getFileId();
+
   /**
-   * <pre>
-   * List of uploaded file names
-   * </pre>
-   *
-   * <code>string filenames = 1;</code>
+   * <code>string filename = 2;</code>
+   */
+  java.lang.String getFilename();
+  /**
+   * <code>string filename = 2;</code>
    */
   com.google.protobuf.ByteString
-      getFilenamesBytes();
+      getFilenameBytes();
+
+  /**
+   * <code>int32 content = 3;</code>
+   */
+  int getContent();
 }

@@ -24,4 +24,9 @@ public interface FileDeleteResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMessageBytes();
+
+  /**
+   * <code>bool success = 2;</code>
+   */
+  boolean getSuccess();
 }

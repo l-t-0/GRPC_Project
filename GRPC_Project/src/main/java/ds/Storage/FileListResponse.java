@@ -16,7 +16,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FileListResponse() {
-    filenames_ = "";
+    fileId_ = 0;
+    filename_ = "";
+    content_ = 0;
   }
 
   @java.lang.Override
@@ -43,10 +45,20 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            fileId_ = input.readInt32();
+            break;
+          }
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            filenames_ = s;
+            filename_ = s;
+            break;
+          }
+          case 24: {
+
+            content_ = input.readInt32();
             break;
           }
           default: {
@@ -81,46 +93,60 @@ private static final long serialVersionUID = 0L;
             ds.Storage.FileListResponse.class, ds.Storage.FileListResponse.Builder.class);
   }
 
-  public static final int FILENAMES_FIELD_NUMBER = 1;
-  private volatile java.lang.Object filenames_;
+  public static final int FILE_ID_FIELD_NUMBER = 1;
+  private int fileId_;
   /**
    * <pre>
    * List of uploaded file names
    * </pre>
    *
-   * <code>string filenames = 1;</code>
+   * <code>int32 file_id = 1;</code>
    */
-  public java.lang.String getFilenames() {
-    java.lang.Object ref = filenames_;
+  public int getFileId() {
+    return fileId_;
+  }
+
+  public static final int FILENAME_FIELD_NUMBER = 2;
+  private volatile java.lang.Object filename_;
+  /**
+   * <code>string filename = 2;</code>
+   */
+  public java.lang.String getFilename() {
+    java.lang.Object ref = filename_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      filenames_ = s;
+      filename_ = s;
       return s;
     }
   }
   /**
-   * <pre>
-   * List of uploaded file names
-   * </pre>
-   *
-   * <code>string filenames = 1;</code>
+   * <code>string filename = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getFilenamesBytes() {
-    java.lang.Object ref = filenames_;
+      getFilenameBytes() {
+    java.lang.Object ref = filename_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      filenames_ = b;
+      filename_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int CONTENT_FIELD_NUMBER = 3;
+  private int content_;
+  /**
+   * <code>int32 content = 3;</code>
+   */
+  public int getContent() {
+    return content_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -137,8 +163,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getFilenamesBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, filenames_);
+    if (fileId_ != 0) {
+      output.writeInt32(1, fileId_);
+    }
+    if (!getFilenameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, filename_);
+    }
+    if (content_ != 0) {
+      output.writeInt32(3, content_);
     }
     unknownFields.writeTo(output);
   }
@@ -149,8 +181,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getFilenamesBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, filenames_);
+    if (fileId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, fileId_);
+    }
+    if (!getFilenameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, filename_);
+    }
+    if (content_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, content_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,8 +208,12 @@ private static final long serialVersionUID = 0L;
     ds.Storage.FileListResponse other = (ds.Storage.FileListResponse) obj;
 
     boolean result = true;
-    result = result && getFilenames()
-        .equals(other.getFilenames());
+    result = result && (getFileId()
+        == other.getFileId());
+    result = result && getFilename()
+        .equals(other.getFilename());
+    result = result && (getContent()
+        == other.getContent());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -181,8 +225,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FILENAMES_FIELD_NUMBER;
-    hash = (53 * hash) + getFilenames().hashCode();
+    hash = (37 * hash) + FILE_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getFileId();
+    hash = (37 * hash) + FILENAME_FIELD_NUMBER;
+    hash = (53 * hash) + getFilename().hashCode();
+    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+    hash = (53 * hash) + getContent();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -316,7 +364,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      filenames_ = "";
+      fileId_ = 0;
+
+      filename_ = "";
+
+      content_ = 0;
 
       return this;
     }
@@ -344,7 +396,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.Storage.FileListResponse buildPartial() {
       ds.Storage.FileListResponse result = new ds.Storage.FileListResponse(this);
-      result.filenames_ = filenames_;
+      result.fileId_ = fileId_;
+      result.filename_ = filename_;
+      result.content_ = content_;
       onBuilt();
       return result;
     }
@@ -393,9 +447,15 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Storage.FileListResponse other) {
       if (other == ds.Storage.FileListResponse.getDefaultInstance()) return this;
-      if (!other.getFilenames().isEmpty()) {
-        filenames_ = other.filenames_;
+      if (other.getFileId() != 0) {
+        setFileId(other.getFileId());
+      }
+      if (!other.getFilename().isEmpty()) {
+        filename_ = other.filename_;
         onChanged();
+      }
+      if (other.getContent() != 0) {
+        setContent(other.getContent());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -426,91 +486,135 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object filenames_ = "";
+    private int fileId_ ;
     /**
      * <pre>
      * List of uploaded file names
      * </pre>
      *
-     * <code>string filenames = 1;</code>
+     * <code>int32 file_id = 1;</code>
      */
-    public java.lang.String getFilenames() {
-      java.lang.Object ref = filenames_;
+    public int getFileId() {
+      return fileId_;
+    }
+    /**
+     * <pre>
+     * List of uploaded file names
+     * </pre>
+     *
+     * <code>int32 file_id = 1;</code>
+     */
+    public Builder setFileId(int value) {
+      
+      fileId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * List of uploaded file names
+     * </pre>
+     *
+     * <code>int32 file_id = 1;</code>
+     */
+    public Builder clearFileId() {
+      
+      fileId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object filename_ = "";
+    /**
+     * <code>string filename = 2;</code>
+     */
+    public java.lang.String getFilename() {
+      java.lang.Object ref = filename_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        filenames_ = s;
+        filename_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <pre>
-     * List of uploaded file names
-     * </pre>
-     *
-     * <code>string filenames = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getFilenamesBytes() {
-      java.lang.Object ref = filenames_;
+        getFilenameBytes() {
+      java.lang.Object ref = filename_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        filenames_ = b;
+        filename_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <pre>
-     * List of uploaded file names
-     * </pre>
-     *
-     * <code>string filenames = 1;</code>
+     * <code>string filename = 2;</code>
      */
-    public Builder setFilenames(
+    public Builder setFilename(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      filenames_ = value;
+      filename_ = value;
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * List of uploaded file names
-     * </pre>
-     *
-     * <code>string filenames = 1;</code>
+     * <code>string filename = 2;</code>
      */
-    public Builder clearFilenames() {
+    public Builder clearFilename() {
       
-      filenames_ = getDefaultInstance().getFilenames();
+      filename_ = getDefaultInstance().getFilename();
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * List of uploaded file names
-     * </pre>
-     *
-     * <code>string filenames = 1;</code>
+     * <code>string filename = 2;</code>
      */
-    public Builder setFilenamesBytes(
+    public Builder setFilenameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      filenames_ = value;
+      filename_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int content_ ;
+    /**
+     * <code>int32 content = 3;</code>
+     */
+    public int getContent() {
+      return content_;
+    }
+    /**
+     * <code>int32 content = 3;</code>
+     */
+    public Builder setContent(int value) {
+      
+      content_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 content = 3;</code>
+     */
+    public Builder clearContent() {
+      
+      content_ = 0;
       onChanged();
       return this;
     }

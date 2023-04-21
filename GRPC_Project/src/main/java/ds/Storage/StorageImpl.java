@@ -70,18 +70,19 @@ public final class StorageImpl {
       "dRequest\022\017\n\007file_id\030\001 \001(\005\"J\n\024FileDownloa" +
       "dResponse\022\020\n\010filename\030\001 \001(\t\022\017\n\007content\030\002" +
       " \001(\005\022\017\n\007message\030\003 \001(\t\"$\n\021FileDeleteReque" +
-      "st\022\017\n\007file_id\030\001 \001(\005\"%\n\022FileDeleteRespons" +
-      "e\022\017\n\007message\030\001 \001(\t\"%\n\020FileListResponse\022\021" +
-      "\n\tfilenames\030\001 \001(\t2\264\002\n\007Storage\022L\n\013UploadF" +
-      "iles\022\032.Storage.FileUploadRequest\032\033.Stora" +
-      "ge.FileUploadResponse\"\000(\0010\001\022R\n\rDownloadF" +
-      "iles\022\034.Storage.FileDownloadRequest\032\035.Sto" +
-      "rage.FileDownloadResponse\"\000(\0010\001\022G\n\nDelet" +
-      "eFile\022\032.Storage.FileDeleteRequest\032\033.Stor" +
-      "age.FileDeleteResponse\"\000\022>\n\017RequestFileL" +
-      "ist\022\016.Storage.Empty\032\031.Storage.FileListRe" +
-      "sponse\"\000B\033\n\nds.StorageB\013StorageImplP\001b\006p" +
-      "roto3"
+      "st\022\017\n\007file_id\030\001 \001(\005\"6\n\022FileDeleteRespons" +
+      "e\022\017\n\007message\030\001 \001(\t\022\017\n\007success\030\002 \001(\010\"F\n\020F" +
+      "ileListResponse\022\017\n\007file_id\030\001 \001(\005\022\020\n\010file" +
+      "name\030\002 \001(\t\022\017\n\007content\030\003 \001(\0052\264\002\n\007Storage\022" +
+      "L\n\013UploadFiles\022\032.Storage.FileUploadReque" +
+      "st\032\033.Storage.FileUploadResponse\"\000(\0010\001\022R\n" +
+      "\rDownloadFiles\022\034.Storage.FileDownloadReq" +
+      "uest\032\035.Storage.FileDownloadResponse\"\000(\0010" +
+      "\001\022G\n\nDeleteFile\022\032.Storage.FileDeleteRequ" +
+      "est\032\033.Storage.FileDeleteResponse\"\000\022>\n\017Re" +
+      "questFileList\022\016.Storage.Empty\032\031.Storage." +
+      "FileListResponse\"\000B\033\n\nds.StorageB\013Storag" +
+      "eImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -136,13 +137,13 @@ public final class StorageImpl {
     internal_static_Storage_FileDeleteResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Storage_FileDeleteResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        new java.lang.String[] { "Message", "Success", });
     internal_static_Storage_FileListResponse_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_Storage_FileListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Storage_FileListResponse_descriptor,
-        new java.lang.String[] { "Filenames", });
+        new java.lang.String[] { "FileId", "Filename", "Content", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

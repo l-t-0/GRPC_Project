@@ -7,17 +7,31 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import ds.Temperature.TemperatureGrpc.TemperatureImplBase;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 
 public class TemperatureServer extends TemperatureImplBase{
 
-    ArrayList<Integer> roomIds = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    ArrayList<Integer> roomIds = createRoomArrayList();
     Random rd = new Random();
-    ArrayList<Float> temps = new ArrayList<>(Arrays.asList(rTemp(), rTemp(), rTemp(), rTemp(),
-            rTemp(), rTemp(), rTemp(), rTemp(), rTemp(), rTemp()));
+    ArrayList<Float> temps = createTempArrayList();
+
+    public static ArrayList<Integer> createRoomArrayList() {
+        ArrayList<Integer> rooms = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            rooms.add(i);
+        }
+        return rooms;
+    }
+
+    public static ArrayList<Float> createTempArrayList() {
+        ArrayList<Float> temps = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            temps.add(rTemp());
+        }
+        return temps;
+    }
+
 
 
 
