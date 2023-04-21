@@ -18,10 +18,28 @@ public interface FileUploadResponseOrBuilder extends
 
   /**
    * <pre>
+   * Name of the uploaded file
+   * </pre>
+   *
+   * <code>string filename = 2;</code>
+   */
+  java.lang.String getFilename();
+  /**
+   * <pre>
+   * Name of the uploaded file
+   * </pre>
+   *
+   * <code>string filename = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getFilenameBytes();
+
+  /**
+   * <pre>
    * Message indicating if the upload was successful
    * </pre>
    *
-   * <code>string message = 2;</code>
+   * <code>string message = 3;</code>
    */
   java.lang.String getMessage();
   /**
@@ -29,7 +47,7 @@ public interface FileUploadResponseOrBuilder extends
    * Message indicating if the upload was successful
    * </pre>
    *
-   * <code>string message = 2;</code>
+   * <code>string message = 3;</code>
    */
   com.google.protobuf.ByteString
       getMessageBytes();

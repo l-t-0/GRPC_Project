@@ -9,30 +9,30 @@ public interface FileDownloadResponseOrBuilder extends
 
   /**
    * <pre>
-   * Filename of the downloaded file
+   * ID of the downloaded file
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>int32 file_id = 1;</code>
+   */
+  int getFileId();
+
+  /**
+   * <pre>
+   * Name of the downloaded file
+   * </pre>
+   *
+   * <code>string filename = 2;</code>
    */
   java.lang.String getFilename();
   /**
    * <pre>
-   * Filename of the downloaded file
+   * Name of the downloaded file
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>string filename = 2;</code>
    */
   com.google.protobuf.ByteString
       getFilenameBytes();
-
-  /**
-   * <pre>
-   * Content of the downloaded file
-   * </pre>
-   *
-   * <code>int32 content = 2;</code>
-   */
-  int getContent();
 
   /**
    * <pre>

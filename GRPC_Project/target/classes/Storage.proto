@@ -17,23 +17,23 @@ service Storage {
   rpc DeleteFile(FileDeleteRequest) returns (FileDeleteResponse) {}
 
   // Method for requesting the uploaded file list
-  rpc RequestFileList(Empty) returns (FileListResponse) {}
+  rpc RequestFileList(Empty) returns (stream FileListResponse) {}
 }
 
 message Empty {}
 
 message FileUploadRequest {
-  // Filename of the file being uploaded
-  string filename = 1;
-  // Content of the file being uploaded
-  int32 content = 2;
+  // ID of the file being uploaded
+  int32 file_id = 1;
 }
 
 message FileUploadResponse {
   // ID of the uploaded file
   int32 file_id = 1;
+  // Name of the uploaded file
+  string filename = 2;
   // Message indicating if the upload was successful
-  string message = 2;
+  string message = 3;
 }
 
 message FileDownloadRequest {
@@ -42,12 +42,10 @@ message FileDownloadRequest {
 }
 
 message FileDownloadResponse {
-  // Filename of the downloaded file
-  string filename = 1;
-
-  // Content of the downloaded file
-  int32 content = 2;
-
+  // ID of the downloaded file
+  int32 file_id = 1;
+  // Name of the downloaded file
+  string filename = 2;
   // Message indicating if the download was successful
   string message = 3;
 }

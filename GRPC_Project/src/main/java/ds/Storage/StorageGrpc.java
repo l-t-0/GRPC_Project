@@ -130,7 +130,7 @@ public final class StorageGrpc {
       fullMethodName = SERVICE_NAME + '/' + "RequestFileList",
       requestType = ds.Storage.Empty.class,
       responseType = ds.Storage.FileListResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<ds.Storage.Empty,
       ds.Storage.FileListResponse> getRequestFileListMethod() {
     io.grpc.MethodDescriptor<ds.Storage.Empty, ds.Storage.FileListResponse> getRequestFileListMethod;
@@ -139,7 +139,7 @@ public final class StorageGrpc {
         if ((getRequestFileListMethod = StorageGrpc.getRequestFileListMethod) == null) {
           StorageGrpc.getRequestFileListMethod = getRequestFileListMethod = 
               io.grpc.MethodDescriptor.<ds.Storage.Empty, ds.Storage.FileListResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "Storage.Storage", "RequestFileList"))
               .setSampledToLocalTracing(true)
@@ -247,7 +247,7 @@ public final class StorageGrpc {
                   this, METHODID_DELETE_FILE)))
           .addMethod(
             getRequestFileListMethod(),
-            asyncUnaryCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 ds.Storage.Empty,
                 ds.Storage.FileListResponse>(
@@ -314,7 +314,7 @@ public final class StorageGrpc {
      */
     public void requestFileList(ds.Storage.Empty request,
         io.grpc.stub.StreamObserver<ds.Storage.FileListResponse> responseObserver) {
-      asyncUnaryCall(
+      asyncServerStreamingCall(
           getChannel().newCall(getRequestFileListMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -352,8 +352,9 @@ public final class StorageGrpc {
      * Method for requesting the uploaded file list
      * </pre>
      */
-    public ds.Storage.FileListResponse requestFileList(ds.Storage.Empty request) {
-      return blockingUnaryCall(
+    public java.util.Iterator<ds.Storage.FileListResponse> requestFileList(
+        ds.Storage.Empty request) {
+      return blockingServerStreamingCall(
           getChannel(), getRequestFileListMethod(), getCallOptions(), request);
     }
   }
@@ -385,17 +386,6 @@ public final class StorageGrpc {
         ds.Storage.FileDeleteRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteFileMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * Method for requesting the uploaded file list
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<ds.Storage.FileListResponse> requestFileList(
-        ds.Storage.Empty request) {
-      return futureUnaryCall(
-          getChannel().newCall(getRequestFileListMethod(), getCallOptions()), request);
     }
   }
 

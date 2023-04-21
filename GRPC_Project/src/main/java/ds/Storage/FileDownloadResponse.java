@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FileDownloadResponse() {
+    fileId_ = 0;
     filename_ = "";
-    content_ = 0;
     message_ = "";
   }
 
@@ -45,15 +45,15 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            fileId_ = input.readInt32();
+            break;
+          }
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             filename_ = s;
-            break;
-          }
-          case 16: {
-
-            content_ = input.readInt32();
             break;
           }
           case 26: {
@@ -94,14 +94,27 @@ private static final long serialVersionUID = 0L;
             ds.Storage.FileDownloadResponse.class, ds.Storage.FileDownloadResponse.Builder.class);
   }
 
-  public static final int FILENAME_FIELD_NUMBER = 1;
+  public static final int FILE_ID_FIELD_NUMBER = 1;
+  private int fileId_;
+  /**
+   * <pre>
+   * ID of the downloaded file
+   * </pre>
+   *
+   * <code>int32 file_id = 1;</code>
+   */
+  public int getFileId() {
+    return fileId_;
+  }
+
+  public static final int FILENAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object filename_;
   /**
    * <pre>
-   * Filename of the downloaded file
+   * Name of the downloaded file
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>string filename = 2;</code>
    */
   public java.lang.String getFilename() {
     java.lang.Object ref = filename_;
@@ -117,10 +130,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Filename of the downloaded file
+   * Name of the downloaded file
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>string filename = 2;</code>
    */
   public com.google.protobuf.ByteString
       getFilenameBytes() {
@@ -134,19 +147,6 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
-  }
-
-  public static final int CONTENT_FIELD_NUMBER = 2;
-  private int content_;
-  /**
-   * <pre>
-   * Content of the downloaded file
-   * </pre>
-   *
-   * <code>int32 content = 2;</code>
-   */
-  public int getContent() {
-    return content_;
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 3;
@@ -205,11 +205,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getFilenameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, filename_);
+    if (fileId_ != 0) {
+      output.writeInt32(1, fileId_);
     }
-    if (content_ != 0) {
-      output.writeInt32(2, content_);
+    if (!getFilenameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, filename_);
     }
     if (!getMessageBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
@@ -223,12 +223,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getFilenameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, filename_);
-    }
-    if (content_ != 0) {
+    if (fileId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, content_);
+        .computeInt32Size(1, fileId_);
+    }
+    if (!getFilenameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, filename_);
     }
     if (!getMessageBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
@@ -249,10 +249,10 @@ private static final long serialVersionUID = 0L;
     ds.Storage.FileDownloadResponse other = (ds.Storage.FileDownloadResponse) obj;
 
     boolean result = true;
+    result = result && (getFileId()
+        == other.getFileId());
     result = result && getFilename()
         .equals(other.getFilename());
-    result = result && (getContent()
-        == other.getContent());
     result = result && getMessage()
         .equals(other.getMessage());
     result = result && unknownFields.equals(other.unknownFields);
@@ -266,10 +266,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FILE_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getFileId();
     hash = (37 * hash) + FILENAME_FIELD_NUMBER;
     hash = (53 * hash) + getFilename().hashCode();
-    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getContent();
     hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
     hash = (53 * hash) + getMessage().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -405,9 +405,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      filename_ = "";
+      fileId_ = 0;
 
-      content_ = 0;
+      filename_ = "";
 
       message_ = "";
 
@@ -437,8 +437,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.Storage.FileDownloadResponse buildPartial() {
       ds.Storage.FileDownloadResponse result = new ds.Storage.FileDownloadResponse(this);
+      result.fileId_ = fileId_;
       result.filename_ = filename_;
-      result.content_ = content_;
       result.message_ = message_;
       onBuilt();
       return result;
@@ -488,12 +488,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Storage.FileDownloadResponse other) {
       if (other == ds.Storage.FileDownloadResponse.getDefaultInstance()) return this;
+      if (other.getFileId() != 0) {
+        setFileId(other.getFileId());
+      }
       if (!other.getFilename().isEmpty()) {
         filename_ = other.filename_;
         onChanged();
-      }
-      if (other.getContent() != 0) {
-        setContent(other.getContent());
       }
       if (!other.getMessage().isEmpty()) {
         message_ = other.message_;
@@ -528,13 +528,51 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int fileId_ ;
+    /**
+     * <pre>
+     * ID of the downloaded file
+     * </pre>
+     *
+     * <code>int32 file_id = 1;</code>
+     */
+    public int getFileId() {
+      return fileId_;
+    }
+    /**
+     * <pre>
+     * ID of the downloaded file
+     * </pre>
+     *
+     * <code>int32 file_id = 1;</code>
+     */
+    public Builder setFileId(int value) {
+      
+      fileId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * ID of the downloaded file
+     * </pre>
+     *
+     * <code>int32 file_id = 1;</code>
+     */
+    public Builder clearFileId() {
+      
+      fileId_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object filename_ = "";
     /**
      * <pre>
-     * Filename of the downloaded file
+     * Name of the downloaded file
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public java.lang.String getFilename() {
       java.lang.Object ref = filename_;
@@ -550,10 +588,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Filename of the downloaded file
+     * Name of the downloaded file
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFilenameBytes() {
@@ -570,10 +608,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Filename of the downloaded file
+     * Name of the downloaded file
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public Builder setFilename(
         java.lang.String value) {
@@ -587,10 +625,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Filename of the downloaded file
+     * Name of the downloaded file
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public Builder clearFilename() {
       
@@ -600,10 +638,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Filename of the downloaded file
+     * Name of the downloaded file
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>string filename = 2;</code>
      */
     public Builder setFilenameBytes(
         com.google.protobuf.ByteString value) {
@@ -613,44 +651,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       filename_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int content_ ;
-    /**
-     * <pre>
-     * Content of the downloaded file
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public int getContent() {
-      return content_;
-    }
-    /**
-     * <pre>
-     * Content of the downloaded file
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public Builder setContent(int value) {
-      
-      content_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Content of the downloaded file
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public Builder clearContent() {
-      
-      content_ = 0;
       onChanged();
       return this;
     }

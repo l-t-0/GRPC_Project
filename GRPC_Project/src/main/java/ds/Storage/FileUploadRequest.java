@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FileUploadRequest() {
-    filename_ = "";
-    content_ = 0;
+    fileId_ = 0;
   }
 
   @java.lang.Override
@@ -44,15 +43,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            filename_ = s;
-            break;
-          }
-          case 16: {
-
-            content_ = input.readInt32();
+            fileId_ = input.readInt32();
             break;
           }
           default: {
@@ -87,59 +80,17 @@ private static final long serialVersionUID = 0L;
             ds.Storage.FileUploadRequest.class, ds.Storage.FileUploadRequest.Builder.class);
   }
 
-  public static final int FILENAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object filename_;
+  public static final int FILE_ID_FIELD_NUMBER = 1;
+  private int fileId_;
   /**
    * <pre>
-   * Filename of the file being uploaded
+   * ID of the file being uploaded
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>int32 file_id = 1;</code>
    */
-  public java.lang.String getFilename() {
-    java.lang.Object ref = filename_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      filename_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * Filename of the file being uploaded
-   * </pre>
-   *
-   * <code>string filename = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getFilenameBytes() {
-    java.lang.Object ref = filename_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      filename_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CONTENT_FIELD_NUMBER = 2;
-  private int content_;
-  /**
-   * <pre>
-   * Content of the file being uploaded
-   * </pre>
-   *
-   * <code>int32 content = 2;</code>
-   */
-  public int getContent() {
-    return content_;
+  public int getFileId() {
+    return fileId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -156,11 +107,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getFilenameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, filename_);
-    }
-    if (content_ != 0) {
-      output.writeInt32(2, content_);
+    if (fileId_ != 0) {
+      output.writeInt32(1, fileId_);
     }
     unknownFields.writeTo(output);
   }
@@ -171,12 +119,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getFilenameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, filename_);
-    }
-    if (content_ != 0) {
+    if (fileId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, content_);
+        .computeInt32Size(1, fileId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -194,10 +139,8 @@ private static final long serialVersionUID = 0L;
     ds.Storage.FileUploadRequest other = (ds.Storage.FileUploadRequest) obj;
 
     boolean result = true;
-    result = result && getFilename()
-        .equals(other.getFilename());
-    result = result && (getContent()
-        == other.getContent());
+    result = result && (getFileId()
+        == other.getFileId());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -209,10 +152,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FILENAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFilename().hashCode();
-    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-    hash = (53 * hash) + getContent();
+    hash = (37 * hash) + FILE_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getFileId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -346,9 +287,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      filename_ = "";
-
-      content_ = 0;
+      fileId_ = 0;
 
       return this;
     }
@@ -376,8 +315,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.Storage.FileUploadRequest buildPartial() {
       ds.Storage.FileUploadRequest result = new ds.Storage.FileUploadRequest(this);
-      result.filename_ = filename_;
-      result.content_ = content_;
+      result.fileId_ = fileId_;
       onBuilt();
       return result;
     }
@@ -426,12 +364,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Storage.FileUploadRequest other) {
       if (other == ds.Storage.FileUploadRequest.getDefaultInstance()) return this;
-      if (!other.getFilename().isEmpty()) {
-        filename_ = other.filename_;
-        onChanged();
-      }
-      if (other.getContent() != 0) {
-        setContent(other.getContent());
+      if (other.getFileId() != 0) {
+        setFileId(other.getFileId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -462,129 +396,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object filename_ = "";
+    private int fileId_ ;
     /**
      * <pre>
-     * Filename of the file being uploaded
+     * ID of the file being uploaded
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>int32 file_id = 1;</code>
      */
-    public java.lang.String getFilename() {
-      java.lang.Object ref = filename_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        filename_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getFileId() {
+      return fileId_;
     }
     /**
      * <pre>
-     * Filename of the file being uploaded
+     * ID of the file being uploaded
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>int32 file_id = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getFilenameBytes() {
-      java.lang.Object ref = filename_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        filename_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * Filename of the file being uploaded
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     */
-    public Builder setFilename(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      filename_ = value;
+    public Builder setFileId(int value) {
+      
+      fileId_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * Filename of the file being uploaded
+     * ID of the file being uploaded
      * </pre>
      *
-     * <code>string filename = 1;</code>
+     * <code>int32 file_id = 1;</code>
      */
-    public Builder clearFilename() {
+    public Builder clearFileId() {
       
-      filename_ = getDefaultInstance().getFilename();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Filename of the file being uploaded
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     */
-    public Builder setFilenameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      filename_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int content_ ;
-    /**
-     * <pre>
-     * Content of the file being uploaded
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public int getContent() {
-      return content_;
-    }
-    /**
-     * <pre>
-     * Content of the file being uploaded
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public Builder setContent(int value) {
-      
-      content_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Content of the file being uploaded
-     * </pre>
-     *
-     * <code>int32 content = 2;</code>
-     */
-    public Builder clearContent() {
-      
-      content_ = 0;
+      fileId_ = 0;
       onChanged();
       return this;
     }

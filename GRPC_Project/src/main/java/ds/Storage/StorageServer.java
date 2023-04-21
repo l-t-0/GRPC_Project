@@ -2,40 +2,34 @@ package ds.Storage;
 
 import java.io.IOException;
 
-import ds.Temperature.SetRoomTemperatureRequest;
-import ds.Temperature.SetRoomTemperatureResponse;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import ds.Storage.StorageGrpc.StorageImplBase;
-import org.checkerframework.checker.units.qual.C;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 
 public class StorageServer extends StorageImplBase{
 
-    ArrayList<String> systemFileNames = createFileNameArrayList();
-    ArrayList<Integer> systemData = createSystemData();
-    ArrayList<String> uploadedFileNames = new ArrayList<>();
-    ArrayList<Integer> uploadedData = new ArrayList<>();
+    String[] systemFileNames = createFileNameArray(100);
+    Integer[] systemData = createSystemData(100);
+    String[] uploadedFileNames = new String[100];
+    Integer[] uploadedData = new Integer[100];
 
 
-    Random rd = new Random();
-
-    public static ArrayList<String> createFileNameArrayList() {
-        ArrayList<String> fileNames = new ArrayList<>();
+    public static String[] createFileNameArray(int total) {
+        String[] fileNames = new String[total];
         for (int i = 0; i < 100; i++) {
-            fileNames.add(generateRandomString());
+            fileNames[i] = generateRandomString();
         }
         return fileNames;
     }
 
-    public static ArrayList<Integer> createSystemData() {
-        ArrayList<Integer> data = new ArrayList<>();
+    public static Integer[] createSystemData(int total) {
+        Integer[] data = new Integer[total];
         for (int i = 0; i < 100; i++) {
-            data.add(randomInt());
+            data[i] = randomInt();
         }
         return data;
     }
@@ -66,7 +60,7 @@ public class StorageServer extends StorageImplBase{
     public static void main(String[] args) throws InterruptedException, IOException {
         StorageServer service1 = new StorageServer();
 
-        int port = 50053;
+        int port = 50051;
 
         Server server = ServerBuilder.forPort(port)
                 .addService(service1)
@@ -78,19 +72,92 @@ public class StorageServer extends StorageImplBase{
         server.awaitTermination();
     }
 
-    public static float rTemp() {
-        return (new Random().nextFloat() * (32 - 5)) + 5;
+
+    // Method 1
+    public StreamObserver<FileUploadRequest> uploadFiles(StreamObserver<FileUploadResponse> responseObserver) {
+
+        return new StreamObserver<FileUploadRequest> () {
+
+            @Override
+            public void onNext(FileUploadRequest msg) {
+                int id = msg.getFileId();
+                System.out.println("Receiving file upload request for file: " + systemFileNames[id] + " with ID of " + id);
+
+                uploadedFileNames[id] = systemFileNames[id];
+                uploadedData[id] = systemData[id];
+
+                systemFileNames[id] = null;
+                systemData[id] = null;
+
+                FileUploadResponse reply = FileUploadResponse.newBuilder().setFileId(id).setFilename(uploadedFileNames[id]).setMessage("Success").build();
+
+                responseObserver.onNext(reply);
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+                t.printStackTrace();
+
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("File upload complete!");
+
+                responseObserver.onCompleted();
+            }
+
+        };
     }
 
-    
+    // Method 2
+    public StreamObserver<FileDownloadRequest> downloadFiles(StreamObserver<FileDownloadResponse> responseObserver) {
+
+        return new StreamObserver<FileDownloadRequest> () {
+
+            @Override
+            public void onNext(FileDownloadRequest msg) {
+                int id = msg.getFileId();
+                System.out.println("Receiving file download request for file: " + uploadedFileNames[id]);
+
+                systemFileNames[id] = uploadedFileNames[id];
+                systemData[id] = uploadedData[id];
+
+                uploadedFileNames[id] = null;
+                uploadedData[id] = null;
+
+                FileDownloadResponse reply = FileDownloadResponse.newBuilder().setFileId(id).setFilename(systemFileNames[id]).setMessage("Success").build();
+
+                responseObserver.onNext(reply);
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+                t.printStackTrace();
+
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("File download complete!");
+                responseObserver.onCompleted();
+            }
+
+        };
+    }
 
     // Method 3
     @Override
     public void deleteFile(FileDeleteRequest request, StreamObserver<FileDeleteResponse> responseObserver) {
 
-        uploadedFileNames.remove(request.getFileId());
-        uploadedData.remove(request.getFileId());
+        int id = request.getFileId();
 
+        uploadedFileNames[id] = null;
+        uploadedData[id] = null;
 
         // Create and set the response message
         FileDeleteResponse response = FileDeleteResponse.newBuilder()
@@ -116,14 +183,16 @@ public class StorageServer extends StorageImplBase{
     @Override
     public void requestFileList(Empty request, StreamObserver<FileListResponse> responseObserver) {
 
-        for (int i = 0; i < uploadedFileNames.size(); i++) {
-            FileListResponse response = FileListResponse.newBuilder()
-                    .setFileId(i)
-                    .setFilename(uploadedFileNames.get(i))
-                    .setContent(uploadedData.get(i))
-                    .build();
-            responseObserver.onNext(response);
-            System.out.println("Result " + i + " sent!");
+        for (int i = 0; i < uploadedFileNames.length; i++) {
+            if (uploadedFileNames[i] != null) {
+                FileListResponse response = FileListResponse.newBuilder()
+                        .setFileId(i)
+                        .setFilename(uploadedFileNames[i])
+                        .setContent(uploadedData[i])
+                        .build();
+                responseObserver.onNext(response);
+                System.out.println("Result " + i + " sent!");
+            }
         }
 
         responseObserver.onCompleted();

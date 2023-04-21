@@ -38,7 +38,7 @@ public class TemperatureServer extends TemperatureImplBase{
     public static void main(String[] args) throws InterruptedException, IOException {
         TemperatureServer service1 = new TemperatureServer();
 
-        int port = 50053;
+        int port = 50051;
 
         Server server = ServerBuilder.forPort(port)
                 .addService(service1)
@@ -120,5 +120,4 @@ public class TemperatureServer extends TemperatureImplBase{
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
-
 }

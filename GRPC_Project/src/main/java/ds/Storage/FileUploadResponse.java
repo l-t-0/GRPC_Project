@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private FileUploadResponse() {
     fileId_ = 0;
+    filename_ = "";
     message_ = "";
   }
 
@@ -50,6 +51,12 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            filename_ = s;
+            break;
+          }
+          case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
             message_ = s;
@@ -100,14 +107,56 @@ private static final long serialVersionUID = 0L;
     return fileId_;
   }
 
-  public static final int MESSAGE_FIELD_NUMBER = 2;
+  public static final int FILENAME_FIELD_NUMBER = 2;
+  private volatile java.lang.Object filename_;
+  /**
+   * <pre>
+   * Name of the uploaded file
+   * </pre>
+   *
+   * <code>string filename = 2;</code>
+   */
+  public java.lang.String getFilename() {
+    java.lang.Object ref = filename_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      filename_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Name of the uploaded file
+   * </pre>
+   *
+   * <code>string filename = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getFilenameBytes() {
+    java.lang.Object ref = filename_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      filename_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MESSAGE_FIELD_NUMBER = 3;
   private volatile java.lang.Object message_;
   /**
    * <pre>
    * Message indicating if the upload was successful
    * </pre>
    *
-   * <code>string message = 2;</code>
+   * <code>string message = 3;</code>
    */
   public java.lang.String getMessage() {
     java.lang.Object ref = message_;
@@ -126,7 +175,7 @@ private static final long serialVersionUID = 0L;
    * Message indicating if the upload was successful
    * </pre>
    *
-   * <code>string message = 2;</code>
+   * <code>string message = 3;</code>
    */
   public com.google.protobuf.ByteString
       getMessageBytes() {
@@ -159,8 +208,11 @@ private static final long serialVersionUID = 0L;
     if (fileId_ != 0) {
       output.writeInt32(1, fileId_);
     }
+    if (!getFilenameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, filename_);
+    }
     if (!getMessageBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
     }
     unknownFields.writeTo(output);
   }
@@ -175,8 +227,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, fileId_);
     }
+    if (!getFilenameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, filename_);
+    }
     if (!getMessageBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -196,6 +251,8 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && (getFileId()
         == other.getFileId());
+    result = result && getFilename()
+        .equals(other.getFilename());
     result = result && getMessage()
         .equals(other.getMessage());
     result = result && unknownFields.equals(other.unknownFields);
@@ -211,6 +268,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + FILE_ID_FIELD_NUMBER;
     hash = (53 * hash) + getFileId();
+    hash = (37 * hash) + FILENAME_FIELD_NUMBER;
+    hash = (53 * hash) + getFilename().hashCode();
     hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
     hash = (53 * hash) + getMessage().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -348,6 +407,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       fileId_ = 0;
 
+      filename_ = "";
+
       message_ = "";
 
       return this;
@@ -377,6 +438,7 @@ private static final long serialVersionUID = 0L;
     public ds.Storage.FileUploadResponse buildPartial() {
       ds.Storage.FileUploadResponse result = new ds.Storage.FileUploadResponse(this);
       result.fileId_ = fileId_;
+      result.filename_ = filename_;
       result.message_ = message_;
       onBuilt();
       return result;
@@ -428,6 +490,10 @@ private static final long serialVersionUID = 0L;
       if (other == ds.Storage.FileUploadResponse.getDefaultInstance()) return this;
       if (other.getFileId() != 0) {
         setFileId(other.getFileId());
+      }
+      if (!other.getFilename().isEmpty()) {
+        filename_ = other.filename_;
+        onChanged();
       }
       if (!other.getMessage().isEmpty()) {
         message_ = other.message_;
@@ -500,13 +566,102 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object filename_ = "";
+    /**
+     * <pre>
+     * Name of the uploaded file
+     * </pre>
+     *
+     * <code>string filename = 2;</code>
+     */
+    public java.lang.String getFilename() {
+      java.lang.Object ref = filename_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        filename_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Name of the uploaded file
+     * </pre>
+     *
+     * <code>string filename = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFilenameBytes() {
+      java.lang.Object ref = filename_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        filename_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Name of the uploaded file
+     * </pre>
+     *
+     * <code>string filename = 2;</code>
+     */
+    public Builder setFilename(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      filename_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Name of the uploaded file
+     * </pre>
+     *
+     * <code>string filename = 2;</code>
+     */
+    public Builder clearFilename() {
+      
+      filename_ = getDefaultInstance().getFilename();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Name of the uploaded file
+     * </pre>
+     *
+     * <code>string filename = 2;</code>
+     */
+    public Builder setFilenameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      filename_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object message_ = "";
     /**
      * <pre>
      * Message indicating if the upload was successful
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
@@ -525,7 +680,7 @@ private static final long serialVersionUID = 0L;
      * Message indicating if the upload was successful
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -545,7 +700,7 @@ private static final long serialVersionUID = 0L;
      * Message indicating if the upload was successful
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public Builder setMessage(
         java.lang.String value) {
@@ -562,7 +717,7 @@ private static final long serialVersionUID = 0L;
      * Message indicating if the upload was successful
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public Builder clearMessage() {
       
@@ -575,7 +730,7 @@ private static final long serialVersionUID = 0L;
      * Message indicating if the upload was successful
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public Builder setMessageBytes(
         com.google.protobuf.ByteString value) {

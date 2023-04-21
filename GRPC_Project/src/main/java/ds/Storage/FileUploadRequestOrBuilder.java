@@ -9,28 +9,10 @@ public interface FileUploadRequestOrBuilder extends
 
   /**
    * <pre>
-   * Filename of the file being uploaded
+   * ID of the file being uploaded
    * </pre>
    *
-   * <code>string filename = 1;</code>
+   * <code>int32 file_id = 1;</code>
    */
-  java.lang.String getFilename();
-  /**
-   * <pre>
-   * Filename of the file being uploaded
-   * </pre>
-   *
-   * <code>string filename = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getFilenameBytes();
-
-  /**
-   * <pre>
-   * Content of the file being uploaded
-   * </pre>
-   *
-   * <code>int32 content = 2;</code>
-   */
-  int getContent();
+  int getFileId();
 }
