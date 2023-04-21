@@ -114,7 +114,7 @@ public class LightingClient {
             while(response.hasNext()) {
                 String s = "";
                 LightingStatusResponse temp = response.next();
-                s += temp.getRoomId() + " lights are ";
+                s += "Room " + temp.getRoomId() + " lights are ";
                 if(temp.getIsOn()) {
                     s += "on.";
                 } else {

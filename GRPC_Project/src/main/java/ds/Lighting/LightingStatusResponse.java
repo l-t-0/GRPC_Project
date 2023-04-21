@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LightingStatusResponse() {
-    roomId_ = "";
+    roomId_ = 0;
     isOn_ = false;
   }
 
@@ -44,10 +44,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            roomId_ = s;
+            roomId_ = input.readInt32();
             break;
           }
           case 16: {
@@ -88,37 +87,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ROOM_ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object roomId_;
+  private int roomId_;
   /**
-   * <code>string room_id = 1;</code>
+   * <code>int32 room_id = 1;</code>
    */
-  public java.lang.String getRoomId() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      roomId_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string room_id = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getRoomIdBytes() {
-    java.lang.Object ref = roomId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      roomId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getRoomId() {
+    return roomId_;
   }
 
   public static final int IS_ON_FIELD_NUMBER = 2;
@@ -144,8 +118,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getRoomIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roomId_);
+    if (roomId_ != 0) {
+      output.writeInt32(1, roomId_);
     }
     if (isOn_ != false) {
       output.writeBool(2, isOn_);
@@ -159,8 +133,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getRoomIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roomId_);
+    if (roomId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, roomId_);
     }
     if (isOn_ != false) {
       size += com.google.protobuf.CodedOutputStream
@@ -182,8 +157,8 @@ private static final long serialVersionUID = 0L;
     ds.Lighting.LightingStatusResponse other = (ds.Lighting.LightingStatusResponse) obj;
 
     boolean result = true;
-    result = result && getRoomId()
-        .equals(other.getRoomId());
+    result = result && (getRoomId()
+        == other.getRoomId());
     result = result && (getIsOn()
         == other.getIsOn());
     result = result && unknownFields.equals(other.unknownFields);
@@ -198,7 +173,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ROOM_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getRoomId().hashCode();
+    hash = (53 * hash) + getRoomId();
     hash = (37 * hash) + IS_ON_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsOn());
@@ -335,7 +310,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      roomId_ = "";
+      roomId_ = 0;
 
       isOn_ = false;
 
@@ -415,9 +390,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.Lighting.LightingStatusResponse other) {
       if (other == ds.Lighting.LightingStatusResponse.getDefaultInstance()) return this;
-      if (!other.getRoomId().isEmpty()) {
-        roomId_ = other.roomId_;
-        onChanged();
+      if (other.getRoomId() != 0) {
+        setRoomId(other.getRoomId());
       }
       if (other.getIsOn() != false) {
         setIsOn(other.getIsOn());
@@ -451,71 +425,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object roomId_ = "";
+    private int roomId_ ;
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public java.lang.String getRoomId() {
-      java.lang.Object ref = roomId_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        roomId_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getRoomId() {
+      return roomId_;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getRoomIdBytes() {
-      java.lang.Object ref = roomId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        roomId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setRoomId(int value) {
+      
       roomId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string room_id = 1;</code>
+     * <code>int32 room_id = 1;</code>
      */
     public Builder clearRoomId() {
       
-      roomId_ = getDefaultInstance().getRoomId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string room_id = 1;</code>
-     */
-    public Builder setRoomIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      roomId_ = value;
+      roomId_ = 0;
       onChanged();
       return this;
     }

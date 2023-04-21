@@ -106,7 +106,7 @@ public class LightingServer extends LightingServiceImplBase{
 
         for (int i = 0; i < roomIds.size(); i++) {
             LightingStatusResponse response = LightingStatusResponse.newBuilder()
-                    .setRoomId("Room " + roomIds.get(i))
+                    .setRoomId(roomIds.get(i))
                     .setIsOn(statuses.get(i))
                     .build();
             responseObserver.onNext(response);

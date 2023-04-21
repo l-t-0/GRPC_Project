@@ -8,14 +8,9 @@ public interface LightingStatusResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string room_id = 1;</code>
+   * <code>int32 room_id = 1;</code>
    */
-  java.lang.String getRoomId();
-  /**
-   * <code>string room_id = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getRoomIdBytes();
+  int getRoomId();
 
   /**
    * <code>bool is_on = 2;</code>

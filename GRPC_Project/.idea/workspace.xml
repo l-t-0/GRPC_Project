@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/Empty.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/EmptyOrBuilder.java" beforeDir="false" />
@@ -23,23 +22,40 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingRequestOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/Empty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/EmptyOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileListResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileListResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/Empty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/EmptyOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationRequestOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureGrpc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponseOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Lighting.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Lighting.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Lighting.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Lighting.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingAutomationRequestOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$LightingState$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest$LightingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/SetRoomLightingRequestOrBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,5 +138,41 @@
       <updated>1680946680024</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="5892e643-055e-4005-8fc0-7231f01468e8">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/Lorcan/Documents/NCI/Distributed Systems/GRPC_Project/GRPC_Project/src/main/resources" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="5892e643-055e-4005-8fc0-7231f01468e8" value="TOOL_WINDOW" />
+      </map>
+    </option>
   </component>
 </project>

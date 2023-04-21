@@ -44,6 +44,6 @@ message LightingAutomationResponse {
 message Empty {}
 
 message LightingStatusResponse {
-  string room_id = 1;
+  int32 room_id = 1;
   bool is_on = 2;
 }

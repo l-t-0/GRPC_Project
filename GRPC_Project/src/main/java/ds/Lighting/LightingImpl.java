@@ -61,7 +61,7 @@ public final class LightingImpl {
       "\002 \001(\005\022\017\n\007turn_on\030\003 \001(\010\">\n\032LightingAutoma" +
       "tionResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007message" +
       "\030\002 \001(\t\"\007\n\005Empty\"8\n\026LightingStatusRespons" +
-      "e\022\017\n\007room_id\030\001 \001(\t\022\r\n\005is_on\030\002 \001(\0102\232\002\n\017Li" +
+      "e\022\017\n\007room_id\030\001 \001(\005\022\r\n\005is_on\030\002 \001(\0102\232\002\n\017Li" +
       "ghtingService\022V\n\017SetRoomLighting\022 .Light" +
       "ing.SetRoomLightingRequest\032!.Lighting.Se" +
       "tRoomLightingResponse\022a\n\022LightingAutomat" +
