@@ -20,6 +20,7 @@ public class TemperatureServer extends TemperatureImplBase{
             rTemp(), rTemp(), rTemp(), rTemp(), rTemp(), rTemp()));
 
 
+
     public static void main(String[] args) throws InterruptedException, IOException {
         TemperatureServer service1 = new TemperatureServer();
 
@@ -40,28 +41,19 @@ public class TemperatureServer extends TemperatureImplBase{
     }
 
 
-
-    // Method 3
+    // Method 1
     @Override
-    public void setRoomTemperature(SetRoomTemperatureRequest request, StreamObserver<SetRoomTemperatureResponse> responseObserver) {
+    public void temperatureReadoutRequest(Empty request, StreamObserver<TemperatureReadoutResponse> responseObserver) {
 
-        temps.set(request.getRoomId()-1, request.getTemperature());
-
-        // Create and set the response message
-        SetRoomTemperatureResponse response = SetRoomTemperatureResponse.newBuilder()
-                .setSuccess(true)
-                .setMessage("Temperature set successfully, the temperature in Room " + request.getRoomId() + " is now: " + request.getTemperature() + "°C")
-                .build();
-
-        if (response.getSuccess()) {
-            System.out.println("Temperature set successfully");
-        } else {
-            System.out.println("Failed to set temperature");
+        for (int i = 0; i < roomIds.size(); i++) {
+            TemperatureReadoutResponse response = TemperatureReadoutResponse.newBuilder()
+                    .setRoomId(roomIds.get(i))
+                    .setTemperature(temps.get(i))
+                    .build();
+            responseObserver.onNext(response);
+            System.out.println("Result " + roomIds.get(i) + " sent!");
         }
 
-
-        // Send the response back to the client
-        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
 
@@ -75,7 +67,7 @@ public class TemperatureServer extends TemperatureImplBase{
             public void onNext(TemperatureAutomationRequest value) {
                 String x;
                 System.out.println("Received automation request received for room: " + value.getRoomId());
-                s += "Room " + value.getRoomId() + " set to turn lights " + value.getTemperature() + " at " + value.getHour() + " o'clock.\n";
+                s += "Room " + value.getRoomId() + " temperature set to " + value.getTemperature() + " at " + value.getHour() + " o'clock.\n";
             }
 
             @Override
@@ -91,22 +83,28 @@ public class TemperatureServer extends TemperatureImplBase{
         };
     }
 
-    // Method 1
+    // Method 3
     @Override
-    public void temperatureStatusRequest(Empty request, StreamObserver<TemperatureReadoutResponse> responseObserver) {
+    public void setRoomTemperature(SetRoomTemperatureRequest request, StreamObserver<SetRoomTemperatureResponse> responseObserver) {
 
-        for (int i = 0; i < roomIds.size(); i++) {
-            TemperatureReadoutResponse response = TemperatureReadoutResponse.newBuilder()
-                    .setRoomId(roomIds.get(i))
-                    .setTemperature(temps.get(i))
-                    .build();
-            responseObserver.onNext(response);
-            System.out.println("Result " + roomIds.get(i) + " sent!");
+        temps.set(request.getRoomId()-1, request.getTemperature());
+
+        // Create and set the response message
+        SetRoomTemperatureResponse response = SetRoomTemperatureResponse.newBuilder()
+                .setSuccess(true)
+                .setMessage("Temperature set successfully, the temperature in Room " + request.getRoomId() + " is now set to: " + request.getTemperature() + "°C")
+                .build();
+
+        if (response.getSuccess()) {
+            System.out.println("Temperature set successfully");
+        } else {
+            System.out.println("Failed to set temperature");
         }
 
+
+        // Send the response back to the client
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
-
-
 
 }
