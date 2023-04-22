@@ -24,7 +24,6 @@ import java.util.Random;
 
 public class LightingServer extends LightingServiceImplBase{
 
-    private ServiceInfo lightingServiceInfo;
 
     ArrayList<Integer> roomIds = createRoomArrayList();
     ArrayList<Boolean> statuses = createStatusArrayList();
@@ -50,25 +49,97 @@ public class LightingServer extends LightingServiceImplBase{
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        String lighting_service_type = "_maths._tcp.local.";
-        discoverLightingService(lighting_service_type);
-
-        String host = lightingServiceInfo.getHostAddresses()[0];
-        int port = lightingServiceInfo.getPort();
-
-
         LightingServer service1 = new LightingServer();
 
+        Properties prop = service1.getProperties();
 
-        Server server = ServerBuilder.forPort(port)
-                .addService(service1)
-                .build()
-                .start();
+        service1.registerService(prop);
 
-        System.out.println("Lighting Server started, listening on " + port);
+        int port = Integer.valueOf(prop.getProperty("service_port"));
 
-        server.awaitTermination();
+
+        try {
+
+            Server server = ServerBuilder.forPort(port)
+                    .addService(service1)
+                    .build()
+                    .start();
+
+            System.out.println("Lighting Server started, listening on " + port);
+
+            server.awaitTermination();
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
+
+
+    private Properties getProperties() {
+
+        Properties prop = null;
+
+        try (InputStream input = new FileInputStream("src/main/resources/Lighting.properties")) {
+
+            prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            System.out.println("Lighting Service properies:");
+            System.out.println("\t service_type: " + prop.getProperty("service_type"));
+            System.out.println("\t service_name: " +prop.getProperty("service_name"));
+            System.out.println("\t service_description: " +prop.getProperty("service_description"));
+            System.out.println("\t service_port: " +prop.getProperty("service_port"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return prop;
+    }
+
+
+    private  void registerService(Properties prop) {
+
+        try {
+            // Create a JmDNS instance
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+
+            String service_type = prop.getProperty("service_type") ;//"_http._tcp.local.";
+            String service_name = prop.getProperty("service_name")  ;// "example";
+            // int service_port = 1234;
+            int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50051;
+
+            String service_description_properties = prop.getProperty("service_description")  ;//"path=index.html";
+
+            // Register a service
+            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
+            jmdns.registerService(serviceInfo);
+
+            System.out.printf("Registering service with type %s and name %s \n", service_type, service_name);
+
+            // Wait a bit
+            Thread.sleep(1000);
+
+            // Unregister all services
+            //jmdns.unregisterAllServices();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 
@@ -152,126 +223,9 @@ public class LightingServer extends LightingServiceImplBase{
     }
 
 
-    private Properties getProperties() {
-
-        Properties prop = null;
-
-        try (InputStream input = new FileInputStream("src/main/resources/Lighting.properties")) {
-
-            prop = new Properties();
-
-            // load a properties file
-            prop.load(input);
-
-            // get the property value and print it out
-            System.out.println("Lighting Service properies:");
-            System.out.println("\t service_type: " + prop.getProperty("service_type"));
-            System.out.println("\t service_name: " +prop.getProperty("service_name"));
-            System.out.println("\t service_description: " +prop.getProperty("service_description"));
-            System.out.println("\t service_port: " +prop.getProperty("service_port"));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return prop;
-    }
 
 
-    private  void registerService(Properties prop) {
 
-        try {
-            // Create a JmDNS instance
-            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
-
-            String service_type = prop.getProperty("service_type") ;//"_http._tcp.local.";
-            String service_name = prop.getProperty("service_name")  ;// "example";
-            // int service_port = 1234;
-            int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50051;
-
-            String service_description_properties = prop.getProperty("service_description")  ;//"path=index.html";
-
-            // Register a service
-            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
-            jmdns.registerService(serviceInfo);
-
-            System.out.printf("Registering service with type %s and name %s \n", service_type, service_name);
-
-            // Wait a bit
-            Thread.sleep(1000);
-
-            // Unregister all services
-            //jmdns.unregisterAllServices();
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
-
-
-    private void discoverLightingService(String service_type) {
-
-
-        try {
-            // Create a JmDNS instance
-            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
-
-
-            jmdns.addServiceListener(service_type, new ServiceListener() {
-
-                @Override
-                public void serviceResolved(ServiceEvent event) {
-                    System.out.println("Lighting Service resolved: " + event.getInfo());
-
-                    lightingServiceInfo = event.getInfo();
-
-                    int port = lightingServiceInfo.getPort();
-
-                    System.out.println("resolving " + service_type + " with properties ...");
-                    System.out.println("\t port: " + port);
-                    System.out.println("\t type:"+ event.getType());
-                    System.out.println("\t name: " + event.getName());
-                    System.out.println("\t description/properties: " + lightingServiceInfo.getNiceTextString());
-                    System.out.println("\t host: " + lightingServiceInfo.getHostAddresses()[0]);
-
-
-                }
-
-                @Override
-                public void serviceRemoved(ServiceEvent event) {
-                    System.out.println("Lighting Service removed: " + event.getInfo());
-
-
-                }
-
-                @Override
-                public void serviceAdded(ServiceEvent event) {
-                    System.out.println("Lighting Service added: " + event.getInfo());
-
-
-                }
-            });
-
-            // Wait a bit
-            Thread.sleep(2000);
-
-            jmdns.close();
-
-        } catch (UnknownHostException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
-    }
 
 
 

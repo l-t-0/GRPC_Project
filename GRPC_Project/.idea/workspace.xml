@@ -6,55 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/Empty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/EmptyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServiceGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/SetRoomLightingResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/Empty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/EmptyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDeleteResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileDownloadResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileListResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileListResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/Empty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/EmptyOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationRequestOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureAutomationResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureGrpc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,14 +44,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Lorcan/Downloads/jmDNS Tutorial Solution-20230422/jmDNS Tutorial Solution",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
-  <component name="RunManager" selected="Application.LightingServer">
+}]]></component>
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ds.GUI" />
+      <module name="GRPC_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ds.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LightingServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingServer" />
       <module name="GRPC_Project" />
@@ -149,26 +118,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TemperatureServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ds.Temperature.TemperatureServer" />
-      <module name="GRPC_Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ds.Temperature.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.LightingServer" />
         <item itemvalue="Application.StorageClient" />
         <item itemvalue="Application.StorageServer" />
         <item itemvalue="Application.TemperatureClient" />
-        <item itemvalue="Application.TemperatureServer" />
       </list>
     </recent_temporary>
   </component>
