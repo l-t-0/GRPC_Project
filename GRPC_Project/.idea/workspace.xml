@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/Empty.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/EmptyOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationRequest.java" beforeDir="false" />
@@ -13,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingAutomationResponseOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServiceGrpc.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingStatusResponseOrBuilder.java" beforeDir="false" />
@@ -36,10 +38,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadRequestOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/FileUploadResponseOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageGrpc.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/Empty.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/EmptyOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/SetRoomTemperatureRequest.java" beforeDir="false" />
@@ -55,46 +55,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureReadoutResponseOrBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Storage.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Storage.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Storage.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Storage.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponseOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDeleteResponseOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponse$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponse$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponseOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileDownloadResponseOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponseOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileListResponseOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequestOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadRequestOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponseOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/FileUploadResponseOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$MethodHandlers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$MethodHandlers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageBaseDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageBaseDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageBlockingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageBlockingStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageFileDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageFileDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageFutureStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageFutureStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageImplBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageImplBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageMethodDescriptorSupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageMethodDescriptorSupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc$StorageStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageGrpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Storage/StorageServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Storage/StorageServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureClient$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Temperature/TemperatureServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +82,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2O8eXKTgu5Jw0F0Bx2fafUbk99M" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -133,7 +96,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.StorageClient">
+  <component name="RunManager" selected="Application.LightingServer">
     <configuration name="LightingServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingServer" />
       <module name="GRPC_Project" />
@@ -201,9 +164,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LightingServer" />
         <item itemvalue="Application.StorageClient" />
         <item itemvalue="Application.StorageServer" />
-        <item itemvalue="Application.LightingServer" />
         <item itemvalue="Application.TemperatureClient" />
         <item itemvalue="Application.TemperatureServer" />
       </list>
