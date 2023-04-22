@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/GUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Lighting/LightingServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Storage/StorageServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Lighting.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Lighting.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Temperature.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Temperature.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/GUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ds/GUI.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ds/Lighting/LightingServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,30 +51,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Lorcan/Downloads/jmDNS Tutorial Solution-20230422/jmDNS Tutorial Solution",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lorcan/Downloads/jmDNS Tutorial Solution-20230422/jmDNS Tutorial Solution&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.GUI">
-    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ds.GUI" />
-      <module name="GRPC_Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ds.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LightingServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingServer" />
+}</component>
+  <component name="RunManager" selected="Application.StorageClient">
+    <configuration name="LightingClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingClient" />
       <module name="GRPC_Project" />
       <extension name="coverage">
         <pattern>
@@ -118,13 +112,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TemperatureServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ds.Temperature.TemperatureServer" />
+      <module name="GRPC_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ds.Temperature.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GUI" />
-        <item itemvalue="Application.LightingServer" />
         <item itemvalue="Application.StorageClient" />
         <item itemvalue="Application.StorageServer" />
         <item itemvalue="Application.TemperatureClient" />
+        <item itemvalue="Application.LightingClient" />
+        <item itemvalue="Application.TemperatureServer" />
       </list>
     </recent_temporary>
   </component>

@@ -16,6 +16,7 @@ import javax.jmdns.ServiceListener;
 
 import java.io.InputStream;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -92,7 +93,7 @@ public class LightingServer extends LightingServiceImplBase{
             prop.load(input);
 
             // get the property value and print it out
-            System.out.println("Lighting Service properies:");
+            System.out.println("Lighting Service properties:");
             System.out.println("\t service_type: " + prop.getProperty("service_type"));
             System.out.println("\t service_name: " +prop.getProperty("service_name"));
             System.out.println("\t service_description: " +prop.getProperty("service_description"));
@@ -122,6 +123,7 @@ public class LightingServer extends LightingServiceImplBase{
             // Register a service
             ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
             jmdns.registerService(serviceInfo);
+
 
             System.out.printf("Registering service with type %s and name %s \n", service_type, service_name);
 

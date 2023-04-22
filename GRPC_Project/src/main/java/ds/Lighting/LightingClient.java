@@ -42,7 +42,7 @@ public class LightingClient {
 
     }
 
-    private static void lightingAutomation() {
+    public static void lightingAutomation() {
 
         // Handling the stream for client using onNext (logic for handling each message in stream), onError, onCompleted (logic will be executed after the completion of stream)
         StreamObserver<LightingAutomationResponse> responseObserver = new StreamObserver<LightingAutomationResponse>() {
@@ -93,7 +93,7 @@ public class LightingClient {
 
     }
 
-    private static void setRoomLighting(int roomId, boolean isOn) {
+    public static void setRoomLighting(int roomId, boolean isOn) {
 
         SetRoomLightingRequest request = SetRoomLightingRequest.newBuilder()
                 .setRoomId(roomId)
