@@ -208,7 +208,7 @@ public class StorageServer extends StorageImplBase{
         // Creating a string variable to be sent to the client as a message
         String s = "";
 
-        // Error handling to avoid invalid file id inut
+        // Error handling to avoid invalid file id input
         if (uploadedFileNames[id] == null){
             s = "Error: No file found at index " + id + ".";
             System.out.println("Error: Index out of bounds!");
