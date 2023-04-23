@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     fileId_ = 0;
     filename_ = "";
     message_ = "";
+    success_ = false;
   }
 
   @java.lang.Override
@@ -60,6 +61,11 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             message_ = s;
+            break;
+          }
+          case 32: {
+
+            success_ = input.readBool();
             break;
           }
           default: {
@@ -191,6 +197,19 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int SUCCESS_FIELD_NUMBER = 4;
+  private boolean success_;
+  /**
+   * <pre>
+   * Bool to indicate success or failure
+   * </pre>
+   *
+   * <code>bool success = 4;</code>
+   */
+  public boolean getSuccess() {
+    return success_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -214,6 +233,9 @@ private static final long serialVersionUID = 0L;
     if (!getMessageBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
     }
+    if (success_ != false) {
+      output.writeBool(4, success_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -232,6 +254,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!getMessageBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
+    }
+    if (success_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(4, success_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -255,6 +281,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFilename());
     result = result && getMessage()
         .equals(other.getMessage());
+    result = result && (getSuccess()
+        == other.getSuccess());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -272,6 +300,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getFilename().hashCode();
     hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
     hash = (53 * hash) + getMessage().hashCode();
+    hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getSuccess());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -411,6 +442,8 @@ private static final long serialVersionUID = 0L;
 
       message_ = "";
 
+      success_ = false;
+
       return this;
     }
 
@@ -440,6 +473,7 @@ private static final long serialVersionUID = 0L;
       result.fileId_ = fileId_;
       result.filename_ = filename_;
       result.message_ = message_;
+      result.success_ = success_;
       onBuilt();
       return result;
     }
@@ -498,6 +532,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getMessage().isEmpty()) {
         message_ = other.message_;
         onChanged();
+      }
+      if (other.getSuccess() != false) {
+        setSuccess(other.getSuccess());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -740,6 +777,44 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       message_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean success_ ;
+    /**
+     * <pre>
+     * Bool to indicate success or failure
+     * </pre>
+     *
+     * <code>bool success = 4;</code>
+     */
+    public boolean getSuccess() {
+      return success_;
+    }
+    /**
+     * <pre>
+     * Bool to indicate success or failure
+     * </pre>
+     *
+     * <code>bool success = 4;</code>
+     */
+    public Builder setSuccess(boolean value) {
+      
+      success_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Bool to indicate success or failure
+     * </pre>
+     *
+     * <code>bool success = 4;</code>
+     */
+    public Builder clearSuccess() {
+      
+      success_ = false;
       onChanged();
       return this;
     }

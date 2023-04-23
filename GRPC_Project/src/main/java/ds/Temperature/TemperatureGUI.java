@@ -68,11 +68,9 @@ public class TemperatureGUI {
      */
     public TemperatureGUI() {
 
+        // Using service discovery to discover details about the service
         String temperature_service_type = "_temperature._tcp.local.";
         discoverTemperatureService(temperature_service_type);
-
-
-
         String host = temperatureServiceInfo.getHostAddresses()[0];
         int port = temperatureServiceInfo.getPort();
 

@@ -51,4 +51,13 @@ public interface FileUploadResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMessageBytes();
+
+  /**
+   * <pre>
+   * Bool to indicate success or failure
+   * </pre>
+   *
+   * <code>bool success = 4;</code>
+   */
+  boolean getSuccess();
 }

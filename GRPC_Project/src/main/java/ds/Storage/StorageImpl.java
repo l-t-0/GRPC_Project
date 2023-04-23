@@ -64,25 +64,26 @@ public final class StorageImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\rStorage.proto\022\007Storage\"\007\n\005Empty\"$\n\021Fil" +
-      "eUploadRequest\022\017\n\007file_id\030\001 \001(\005\"H\n\022FileU" +
+      "eUploadRequest\022\017\n\007file_id\030\001 \001(\005\"Y\n\022FileU" +
       "ploadResponse\022\017\n\007file_id\030\001 \001(\005\022\020\n\010filena" +
-      "me\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\"&\n\023FileDownloa" +
-      "dRequest\022\017\n\007file_id\030\001 \001(\005\"J\n\024FileDownloa" +
-      "dResponse\022\017\n\007file_id\030\001 \001(\005\022\020\n\010filename\030\002" +
-      " \001(\t\022\017\n\007message\030\003 \001(\t\"$\n\021FileDeleteReque" +
-      "st\022\017\n\007file_id\030\001 \001(\005\"6\n\022FileDeleteRespons" +
-      "e\022\017\n\007message\030\001 \001(\t\022\017\n\007success\030\002 \001(\010\"F\n\020F" +
-      "ileListResponse\022\017\n\007file_id\030\001 \001(\005\022\020\n\010file" +
-      "name\030\002 \001(\t\022\017\n\007content\030\003 \001(\0052\266\002\n\007Storage\022" +
-      "L\n\013UploadFiles\022\032.Storage.FileUploadReque" +
-      "st\032\033.Storage.FileUploadResponse\"\000(\0010\001\022R\n" +
-      "\rDownloadFiles\022\034.Storage.FileDownloadReq" +
-      "uest\032\035.Storage.FileDownloadResponse\"\000(\0010" +
-      "\001\022G\n\nDeleteFile\022\032.Storage.FileDeleteRequ" +
-      "est\032\033.Storage.FileDeleteResponse\"\000\022@\n\017Re" +
-      "questFileList\022\016.Storage.Empty\032\031.Storage." +
-      "FileListResponse\"\0000\001B\033\n\nds.StorageB\013Stor" +
-      "ageImplP\001b\006proto3"
+      "me\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\022\017\n\007success\030\004 \001" +
+      "(\010\"&\n\023FileDownloadRequest\022\017\n\007file_id\030\001 \001" +
+      "(\005\"[\n\024FileDownloadResponse\022\017\n\007file_id\030\001 " +
+      "\001(\005\022\020\n\010filename\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\022\017" +
+      "\n\007success\030\004 \001(\010\"$\n\021FileDeleteRequest\022\017\n\007" +
+      "file_id\030\001 \001(\005\"6\n\022FileDeleteResponse\022\017\n\007m" +
+      "essage\030\001 \001(\t\022\017\n\007success\030\002 \001(\010\"F\n\020FileLis" +
+      "tResponse\022\017\n\007file_id\030\001 \001(\005\022\020\n\010filename\030\002" +
+      " \001(\t\022\017\n\007content\030\003 \001(\0052\266\002\n\007Storage\022L\n\013Upl" +
+      "oadFiles\022\032.Storage.FileUploadRequest\032\033.S" +
+      "torage.FileUploadResponse\"\000(\0010\001\022R\n\rDownl" +
+      "oadFiles\022\034.Storage.FileDownloadRequest\032\035" +
+      ".Storage.FileDownloadResponse\"\000(\0010\001\022G\n\nD" +
+      "eleteFile\022\032.Storage.FileDeleteRequest\032\033." +
+      "Storage.FileDeleteResponse\"\000\022@\n\017RequestF" +
+      "ileList\022\016.Storage.Empty\032\031.Storage.FileLi" +
+      "stResponse\"\0000\001B\033\n\nds.StorageB\013StorageImp" +
+      "lP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -113,7 +114,7 @@ public final class StorageImpl {
     internal_static_Storage_FileUploadResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Storage_FileUploadResponse_descriptor,
-        new java.lang.String[] { "FileId", "Filename", "Message", });
+        new java.lang.String[] { "FileId", "Filename", "Message", "Success", });
     internal_static_Storage_FileDownloadRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_Storage_FileDownloadRequest_fieldAccessorTable = new
@@ -125,7 +126,7 @@ public final class StorageImpl {
     internal_static_Storage_FileDownloadResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Storage_FileDownloadResponse_descriptor,
-        new java.lang.String[] { "FileId", "Filename", "Message", });
+        new java.lang.String[] { "FileId", "Filename", "Message", "Success", });
     internal_static_Storage_FileDeleteRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_Storage_FileDeleteRequest_fieldAccessorTable = new

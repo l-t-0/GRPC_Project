@@ -68,11 +68,9 @@ public class LightingGUI {
      */
     public LightingGUI() {
 
+        // Using service discovery to discover details about the service
         String lighting_service_type = "_lighting._tcp.local.";
         discoverLightingService(lighting_service_type);
-
-
-
         String host = lightingServiceInfo.getHostAddresses()[0];
         int port = lightingServiceInfo.getPort();
 

@@ -20,30 +20,42 @@ service Temperature {
   rpc SetRoomTemperature(SetRoomTemperatureRequest) returns (SetRoomTemperatureResponse);
 }
 
+// Empty message to request temperature readout request
 message Empty {}
 
 message TemperatureReadoutResponse {
+  // Id of the room
   int32 room_id = 1;
+  // Temperature of the room
   float temperature = 2;
 }
 
 message TemperatureAutomationRequest {
+  // Id of the room to have its temperature automated
   int32 room_id = 1;
+  // The time at which the temperature will be changed
   int32 hour = 2;
+  // The desired temperature that will be set when the automation hour is reached
   float temperature = 3;
 }
 
 message TemperatureAutomationResponse {
+  // Boolean to indicate the success or failure of the automation request
   bool success = 1;
+  // Message containing details about the outcome
   string message = 2;
 }
 
 message SetRoomTemperatureRequest {
+  // ID of room at which the temperature will be set
   int32 room_id = 1;
+  // Temperature the room will be set to
   float temperature = 2;
 }
 
 message SetRoomTemperatureResponse {
+  // Boolean to indicate success or failure of the request
   bool success = 1;
+  // Message containing details about the outcome
   string message = 2;
 }

@@ -3,7 +3,6 @@ package ds.Temperature;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import ds.Lighting.LightingAutomationResponse;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -20,18 +19,21 @@ import java.util.Random;
 
 public class TemperatureServer extends TemperatureImplBase{
 
+    // Creating two arrays to represent the rooms and their temperatures
+    // Using methods to fill the arrays with data
     ArrayList<Integer> roomIds = createRoomArrayList();
-    Random rd = new Random();
     ArrayList<Float> temps = createTempArrayList();
 
+    // Method used to create the roomIds array with 10 rooms
     public static ArrayList<Integer> createRoomArrayList() {
         ArrayList<Integer> rooms = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             rooms.add(i);
         }
         return rooms;
     }
 
+    // Method used to create the temps array with 10 random temperatures
     public static ArrayList<Float> createTempArrayList() {
         ArrayList<Float> temps = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -40,19 +42,22 @@ public class TemperatureServer extends TemperatureImplBase{
         return temps;
     }
 
+    // Method used to generate realistic random temperatures
+    public static float rTemp() {
+        return (new Random().nextFloat() * (32 - 5)) + 5;
+    }
 
 
 
     public static void main(String[] args) throws InterruptedException, IOException {
+
+        //Creating a new TemperatureServer object, getting the properties from the .properties file, and registering the service
         TemperatureServer service1 = new TemperatureServer();
-
         Properties prop = service1.getProperties();
-
         service1.registerService(prop);
-
         int port = Integer.valueOf(prop.getProperty("service_port"));
 
-
+        // Building the server
         try {
 
             Server server = ServerBuilder.forPort(port)
@@ -73,15 +78,13 @@ public class TemperatureServer extends TemperatureImplBase{
         }
     }
 
-    public static float rTemp() {
-        return (new Random().nextFloat() * (32 - 5)) + 5;
-    }
 
 
-    // Method 1
+    // Method 1, which utilises server streaming rpc to return the temperature details of all the rooms
     @Override
     public void temperatureReadoutRequest(Empty request, StreamObserver<TemperatureReadoutResponse> responseObserver) {
 
+        // Iterating through all the rooms and reporting their id and temperature
         for (int i = 0; i < roomIds.size(); i++) {
             TemperatureReadoutResponse response = TemperatureReadoutResponse.newBuilder()
                     .setRoomId(roomIds.get(i))
@@ -94,33 +97,29 @@ public class TemperatureServer extends TemperatureImplBase{
         responseObserver.onCompleted();
     }
 
-    // Method 2
+    // Method 2, which utilizes client streaming rpc to receive a stream of time based temperature automation requests from the client
     @Override
     public StreamObserver<TemperatureAutomationRequest> temperatureAutomation(StreamObserver<TemperatureAutomationResponse> responseObserver) {
 
         return new StreamObserver<TemperatureAutomationRequest>() {
-
-            // Error handinling for invalid room number, temperature or hour input
+            // Initialising a string for return message
             String s = "";
+
+            // Error handling for invalid room number, temperature or hour input
             @Override
             public void onNext(TemperatureAutomationRequest value) {
                 if (value.getRoomId() < 1 || value.getRoomId() > 10){
-                    s += value.getRoomId() + " is an invalid room number!\n";
-                    TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
-                    responseObserver.onNext(response);
-                    System.out.println("Invalid temperature automation request received!");
+                    s += "Error: " + value.getRoomId() + " is an invalid room number!\n";
+                    System.out.println("Error: Invalid temperature automation request received!");
                 } else if (value.getHour() < 0 || value.getHour() > 24) {
-                    s += value.getHour() + " is an invalid hour!\n";
-                    TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
-                    responseObserver.onNext(response);
-                    System.out.println("Invalid temperature automation request received!");
+                    s += "Error: " + value.getHour() + " is an invalid hour!\n";
+                    System.out.println("Error: Invalid temperature automation request received!");
                 }else if (value.getTemperature()< 5 || value.getTemperature() > 32){
-                    s += value.getTemperature() + " is an invalid temperature!\n";
+                    s += "Error: " + value.getTemperature() + " is an invalid temperature!\n";
                     TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
                     responseObserver.onNext(response);
-                    System.out.println("Invalid temperature automation request received!");
+                    System.out.println("Error: Invalid temperature automation request received!");
                 } else {
-                    String x;
                     System.out.println("Received automation request received for room: " + value.getRoomId());
                     s += "Room " + value.getRoomId() + " temperature set to " + value.getTemperature() + " at " + value.getHour() + " o'clock.\n";
                 }
@@ -132,7 +131,7 @@ public class TemperatureServer extends TemperatureImplBase{
 
             @Override
             public void onCompleted() {
-                TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).build();
+                TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(true).build();
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
             }
@@ -163,6 +162,7 @@ public class TemperatureServer extends TemperatureImplBase{
         responseObserver.onCompleted();
     }
 
+    // Method used to retrieve properties from .properties file
     private Properties getProperties() {
 
         Properties prop = null;
@@ -188,7 +188,7 @@ public class TemperatureServer extends TemperatureImplBase{
         return prop;
     }
 
-
+    // Method used to register service using properties retrieved using getProperties method
     private  void registerService(Properties prop) {
 
         try {

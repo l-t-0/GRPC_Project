@@ -68,11 +68,10 @@ public class StorageGUI {
      */
     public StorageGUI() {
 
+
+        // Using service discovery to discover details about the service
         String storage_service_type = "_storage._tcp.local.";
         discoverStorageService(storage_service_type);
-
-
-
         String host = storageServiceInfo.getHostAddresses()[0];
         int port = storageServiceInfo.getPort();
 

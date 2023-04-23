@@ -20,6 +20,7 @@ service Storage {
   rpc RequestFileList(Empty) returns (stream FileListResponse) {}
 }
 
+// Empty message to request list of uploaded files
 message Empty {}
 
 message FileUploadRequest {
@@ -34,6 +35,8 @@ message FileUploadResponse {
   string filename = 2;
   // Message indicating if the upload was successful
   string message = 3;
+  // Bool to indicate success or failure
+  bool success = 4;
 }
 
 message FileDownloadRequest {
@@ -48,6 +51,8 @@ message FileDownloadResponse {
   string filename = 2;
   // Message indicating if the download was successful
   string message = 3;
+  // Bool to indicate success or failure
+  bool success = 4;
 }
 
 message FileDeleteRequest {
@@ -56,15 +61,18 @@ message FileDeleteRequest {
 }
 
 message FileDeleteResponse {
-  // Message indicating if the deletion was successful
+  // Message indicating the result of the deletion
   string message = 1;
+  // Boolean indicating whether the deletion was successful or not
   bool success = 2;
 }
 
 message FileListResponse {
-  // List of uploaded file names
+  // Id of uploaded file
   int32 file_id = 1;
+  // Name of uploaded file
   string filename = 2;
+  // Contents of uploaded file
   int32 content = 3;
 
 }

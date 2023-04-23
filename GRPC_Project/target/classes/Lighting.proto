@@ -9,41 +9,56 @@ package Lighting;
 service LightingService {
   // Method 1
   // Single Room Set Lighting
+  // Unary rpc
   rpc SetRoomLighting(SetRoomLightingRequest) returns (SetRoomLightingResponse);
 
   // Method 2
-  // Automate Lighting time based
+  // Time based lighting automation
+  // Client Streaming rpc
   rpc LightingAutomation(stream LightingAutomationRequest) returns (LightingAutomationResponse);
 
   // Method 3
-  // Checks to see if light is on or off
+  // Returns a readout of the status of all of the lights in the building
+  // Server Streaming rpc
   rpc LightingStatusRequest(Empty) returns (stream LightingStatusResponse);
 }
 
 message SetRoomLightingRequest {
+  // Id of the room
   int32 room_id = 1;
+  // Boolean to communicate desired lighting status
   bool is_on = 2;
 }
 
 message SetRoomLightingResponse {
+  // Boolean to indicate success or failure or request
   bool success = 1;
+  // Message to communicate results
   string message = 2;
 }
 
 message LightingAutomationRequest {
+  //Id of room which will have its lighting automated
   int32 room_id = 1;
+  // The hour at which the lighting status of the room will be changed
   int32 hour = 2;
+  // The desired lighting status of the room
   bool turn_on = 3;
 }
 
 message LightingAutomationResponse {
+  // Boolean to indicate success or failure of the request
   bool success = 1;
+  // Message to communicate the result
   string message = 2;
 }
 
+    // Empty message to send to receive LightingStatusResponse
 message Empty {}
 
 message LightingStatusResponse {
+  // Int to communicate the room ID
   int32 room_id = 1;
+  // Boolean to communicate the lighting status of the room
   bool is_on = 2;
 }
