@@ -138,10 +138,11 @@ public class TemperatureServer extends TemperatureImplBase{
         };
     }
 
-    // Method 3
+    // Method 3 which utilizes unary rpc to set the temperature for a specific room
     @Override
     public void setRoomTemperature(SetRoomTemperatureRequest request, StreamObserver<SetRoomTemperatureResponse> responseObserver) {
 
+        // Setting the temperature to the desired value in the temps array
         temps.set(request.getRoomId()-1, request.getTemperature());
 
         // Create and set the response message

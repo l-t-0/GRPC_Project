@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="" />
+    <list default="true" id="cd6bd221-d8f4-4557-ab7d-3ee9ba06e293" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ds/Temperature/TemperatureServer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +49,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.TemperatureServer">
+  <component name="RunManager" selected="Application.TemperatureClient">
     <configuration name="LightingClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ds.Lighting.LightingClient" />
       <module name="GRPC_Project" />
@@ -86,12 +89,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StorageServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ds.Storage.StorageServer" />
+    <configuration name="TemperatureClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ds.Temperature.TemperatureClient" />
       <module name="GRPC_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ds.Storage.*" />
+          <option name="PATTERN" value="ds.Temperature.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,11 +117,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TemperatureServer" />
-        <item itemvalue="Application.StorageServer" />
-        <item itemvalue="Application.LightingServer" />
+        <item itemvalue="Application.TemperatureClient" />
         <item itemvalue="Application.StorageClient" />
         <item itemvalue="Application.LightingClient" />
+        <item itemvalue="Application.LightingServer" />
+        <item itemvalue="Application.TemperatureServer" />
       </list>
     </recent_temporary>
   </component>
