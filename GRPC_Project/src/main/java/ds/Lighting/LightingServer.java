@@ -31,7 +31,7 @@ public class LightingServer extends LightingServiceImplBase{
 
     public static ArrayList<Integer> createRoomArrayList() {
         ArrayList<Integer> rooms = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             rooms.add(i);
         }
         return rooms;
@@ -130,8 +130,6 @@ public class LightingServer extends LightingServiceImplBase{
             // Wait a bit
             Thread.sleep(1000);
 
-            // Unregister all services
-            //jmdns.unregisterAllServices();
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -181,17 +179,31 @@ public class LightingServer extends LightingServiceImplBase{
     public StreamObserver<LightingAutomationRequest> lightingAutomation(StreamObserver<LightingAutomationResponse> responseObserver) {
 
         return new StreamObserver<LightingAutomationRequest>() {
+
+            // Error handling for invalid room number or hour input
             String s = "";
             @Override
             public void onNext(LightingAutomationRequest value) {
-                String x;
-                System.out.println("Received automation request received for room: " + value.getRoomId());
-                if (value.getTurnOn()){
-                    x = "on";
+                if (value.getRoomId() < 1 || value.getRoomId() > 10){
+                    s += value.getRoomId() + " is an invalid room number!\n";
+                    LightingAutomationResponse response = LightingAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
+                    responseObserver.onNext(response);
+                    System.out.println("Invalid lighting automation request received!");
+                } else if (value.getHour() < 0 || value.getHour() > 24){
+                    s += value.getHour() + " is an invalid hour!\n";
+                    LightingAutomationResponse response = LightingAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
+                    responseObserver.onNext(response);
+                    System.out.println("Invalid lighting automation request received!");
                 } else {
-                    x = "off";
+                    String x;
+                    System.out.println("Received automation request received for room: " + value.getRoomId());
+                    if (value.getTurnOn()) {
+                        x = "on";
+                    } else {
+                        x = "off";
+                    }
+                    s += "Room " + value.getRoomId() + " set to turn lights " + x + " at " + value.getHour() + " hours.\n";
                 }
-                s += "Room " + value.getRoomId() + " set to turn lights " + x + " at " + value.getHour() + " o'clock.\n";
             }
 
             @Override

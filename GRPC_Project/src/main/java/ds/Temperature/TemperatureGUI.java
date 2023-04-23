@@ -1,4 +1,4 @@
-package ds.Lighting;
+package ds.Temperature;
 
 
 import java.awt.EventQueue;
@@ -19,8 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ds.Lighting.LightingServiceGrpc.LightingServiceBlockingStub;
-import ds.Lighting.LightingServiceGrpc.LightingServiceStub;
+import ds.Temperature.TemperatureGrpc.TemperatureBlockingStub;
+import ds.Temperature.TemperatureGrpc.TemperatureStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -34,12 +34,12 @@ import java.awt.event.ActionEvent;
 /* Unfinished GUI - I sadly didn't have enough time to finish the GUI files for the code, due to my own error.
 This GUI files also includes the code for service discovery */
 
-public class LightingGUI {
+public class TemperatureGUI {
 
-    private static LightingServiceBlockingStub blockingStub;
-    private static LightingServiceStub asyncStub;
+    private static TemperatureBlockingStub blockingStub;
+    private static TemperatureStub asyncStub;
 
-    private ServiceInfo lightingServiceInfo;
+    private ServiceInfo temperatureServiceInfo;
 
 
     private JFrame frame;
@@ -54,7 +54,7 @@ public class LightingGUI {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    LightingGUI window = new LightingGUI();
+                    TemperatureGUI window = new TemperatureGUI();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -66,15 +66,15 @@ public class LightingGUI {
     /**
      * Create the application.
      */
-    public LightingGUI() {
+    public TemperatureGUI() {
 
-        String lighting_service_type = "_lighting._tcp.local.";
-        discoverLightingService(lighting_service_type);
+        String temperature_service_type = "_temperature._tcp.local.";
+        discoverTemperatureService(temperature_service_type);
 
 
 
-        String host = lightingServiceInfo.getHostAddresses()[0];
-        int port = lightingServiceInfo.getPort();
+        String host = temperatureServiceInfo.getHostAddresses()[0];
+        int port = temperatureServiceInfo.getPort();
 
 
         ManagedChannel channel = ManagedChannelBuilder
@@ -83,16 +83,16 @@ public class LightingGUI {
                 .build();
 
         //stubs -- generate from proto
-        blockingStub = LightingServiceGrpc.newBlockingStub(channel);
+        blockingStub = TemperatureGrpc.newBlockingStub(channel);
 
-        asyncStub = LightingServiceGrpc.newStub(channel);
+        asyncStub = TemperatureGrpc.newStub(channel);
 
         initialize();
     }
 
 
 
-    private void discoverLightingService(String service) {
+    private void discoverTemperatureService(String service) {
 
 
         try {
@@ -104,32 +104,32 @@ public class LightingGUI {
 
                 @Override
                 public void serviceResolved(ServiceEvent event) {
-                    System.out.println("Lighting Service resolved: " + event.getInfo());
+                    System.out.println("Storage Service resolved: " + event.getInfo());
 
-                    lightingServiceInfo = event.getInfo();
+                    temperatureServiceInfo = event.getInfo();
 
-                    int port = lightingServiceInfo.getPort();
+                    int port = temperatureServiceInfo.getPort();
 
-                    System.out.println("resolving " + "_lighting._tcp.local." + " with properties ...");
+                    System.out.println("resolving " + "_storage._tcp.local." + " with properties ...");
                     System.out.println("\t port: " + port);
                     System.out.println("\t type:"+ event.getType());
                     System.out.println("\t name: " + event.getName());
-                    System.out.println("\t description/properties: " + lightingServiceInfo.getNiceTextString());
-                    System.out.println("\t host: " + lightingServiceInfo.getHostAddresses()[0]);
+                    System.out.println("\t description/properties: " + temperatureServiceInfo.getNiceTextString());
+                    System.out.println("\t host: " + temperatureServiceInfo.getHostAddresses()[0]);
 
 
                 }
 
                 @Override
                 public void serviceRemoved(ServiceEvent event) {
-                    System.out.println("Lighting Service removed: " + event.getInfo());
+                    System.out.println("Storage Service removed: " + event.getInfo());
 
 
                 }
 
                 @Override
                 public void serviceAdded(ServiceEvent event) {
-                    System.out.println("Lighting Service added: " + event.getInfo());
+                    System.out.println("Storage Service added: " + event.getInfo());
 
 
                 }
@@ -182,9 +182,6 @@ public class LightingGUI {
         JLabel lblNewLabel_2 = new JLabel("On/Off");
         panel_service_1.add(lblNewLabel_2);
 
-
-
-
         boolean selectedValue;
 
         JComboBox comboOperation = new JComboBox();
@@ -194,24 +191,6 @@ public class LightingGUI {
 
 
         JButton btnCalculate = new JButton("SET");
-        btnCalculate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                int num1 = Integer.parseInt(textNumber1.getText());
-                boolean num2;
-
-                if (comboOperation.getSelectedIndex()==0){
-                    num2=true;
-                } else {
-                    num2 = false;
-                }
-
-                LightingClient.setRoomLighting(num1, num2);
-
-
-
-            }
-        });
         panel_service_1.add(btnCalculate);
 
         textResponse = new JTextArea(3, 20);

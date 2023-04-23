@@ -67,7 +67,11 @@ public class TemperatureClient {
 
             @Override
             public void onNext(TemperatureAutomationResponse value) {
-                System.out.println(value.getMessage());
+                if (value.getSuccess() != true) {
+                    System.out.println("Error: " + value.getMessage());
+                } else {
+                    System.out.println(value.getMessage());
+                }
             }
 
             @Override
@@ -87,11 +91,11 @@ public class TemperatureClient {
 
         try {
 
-            requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(1).setHour(22).setTemperature(23.2f).build());
+            // requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(1).setHour(22).setTemperature(100).build());
             requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(2).setHour(12).setTemperature(5).build());
             requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(3).setHour(02).setTemperature(23.5f).build());
             requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(4).setHour(18).setTemperature(11.5f).build());
-            requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(5).setHour(12).setTemperature(10).build());
+            // requestObserver.onNext(TemperatureAutomationRequest.newBuilder().setRoomId(15).setHour(12).setTemperature(10).build());
 
             System.out.println("SENDING MESSAGES");
 
@@ -114,13 +118,19 @@ public class TemperatureClient {
     // Method 3
     private static void setRoomTemperature(int roomId, float temp) {
 
-        SetRoomTemperatureRequest request = SetRoomTemperatureRequest.newBuilder()
-                .setRoomId(roomId)
-                .setTemperature(temp)
-                .build();
+        if (roomId < 1 || roomId > 10){
+            System.out.println("The room number you entered is invalid, please enter a valid room number");
+        } else if (temp < 5 || temp > 32){
+            System.out.println("The temperature you entered is invalid, please enter a temperature between 5 and 32");
+        } else {
+            SetRoomTemperatureRequest request = SetRoomTemperatureRequest.newBuilder()
+                    .setRoomId(roomId)
+                    .setTemperature(temp)
+                    .build();
 
-        SetRoomTemperatureResponse response = blockingStub.setRoomTemperature(request);
-        System.out.println(response.getMessage());
+            SetRoomTemperatureResponse response = blockingStub.setRoomTemperature(request);
+            System.out.println(response.getMessage());
+        }
 
     }
 

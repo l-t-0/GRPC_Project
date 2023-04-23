@@ -1,5 +1,8 @@
 package ds.Lighting;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -13,17 +16,24 @@ import io.grpc.StatusRuntimeException;
 import ds.Lighting.Empty;
 import io.grpc.stub.StreamObserver;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 
 
 public class LightingClient {
 
     private static  Logger logger = Logger.getLogger(LightingClient.class.getName());
+    private ServiceInfo lightingServiceInfo;
 
     private static LightingServiceGrpc.LightingServiceBlockingStub blockingStub;
     private static LightingServiceGrpc.LightingServiceStub asyncStub;
 
 
     public static void main(String[] args) throws Exception {
+
+
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
 
         //stubs -- generate from proto
@@ -49,7 +59,12 @@ public class LightingClient {
 
             @Override
             public void onNext(LightingAutomationResponse value) {
-                System.out.println(value.getMessage());
+                if (value.getSuccess() != true) {
+                    System.out.println("Error: " + value.getMessage());
+                } else {
+                    System.out.println(value.getMessage());
+                }
+
             }
 
             @Override
@@ -69,11 +84,11 @@ public class LightingClient {
 
         try {
 
-            requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(1).setHour(22).setTurnOn(true).build());
+            // requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(11).setHour(22).setTurnOn(true).build());
             requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(2).setHour(12).setTurnOn(true).build());
             requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(3).setHour(02).setTurnOn(false).build());
             requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(4).setHour(18).setTurnOn(false).build());
-            requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(5).setHour(12).setTurnOn(true).build());
+            // requestObserver.onNext(LightingAutomationRequest.newBuilder().setRoomId(5).setHour(38).setTurnOn(true).build());
 
             System.out.println("SENDING MESSAGES");
 
@@ -95,13 +110,18 @@ public class LightingClient {
 
     public static void setRoomLighting(int roomId, boolean isOn) {
 
-        SetRoomLightingRequest request = SetRoomLightingRequest.newBuilder()
-                .setRoomId(roomId)
-                .setIsOn(isOn)
-                .build();
+        if (roomId >= 1 && roomId <= 10) {
+            SetRoomLightingRequest request = SetRoomLightingRequest.newBuilder()
+                    .setRoomId(roomId)
+                    .setIsOn(isOn)
+                    .build();
 
-        SetRoomLightingResponse response = blockingStub.setRoomLighting(request);
-        System.out.println(response.getMessage());
+            SetRoomLightingResponse response = blockingStub.setRoomLighting(request);
+            System.out.println(response.getMessage());
+        } else {
+            System.out.println("Room Number entered is invalid!");
+
+        }
 
     }
 

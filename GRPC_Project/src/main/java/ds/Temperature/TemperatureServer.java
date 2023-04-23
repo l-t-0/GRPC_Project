@@ -3,6 +3,7 @@ package ds.Temperature;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import ds.Lighting.LightingAutomationResponse;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -98,12 +99,31 @@ public class TemperatureServer extends TemperatureImplBase{
     public StreamObserver<TemperatureAutomationRequest> temperatureAutomation(StreamObserver<TemperatureAutomationResponse> responseObserver) {
 
         return new StreamObserver<TemperatureAutomationRequest>() {
+
+            // Error handinling for invalid room number, temperature or hour input
             String s = "";
             @Override
             public void onNext(TemperatureAutomationRequest value) {
-                String x;
-                System.out.println("Received automation request received for room: " + value.getRoomId());
-                s += "Room " + value.getRoomId() + " temperature set to " + value.getTemperature() + " at " + value.getHour() + " o'clock.\n";
+                if (value.getRoomId() < 1 || value.getRoomId() > 10){
+                    s += value.getRoomId() + " is an invalid room number!\n";
+                    TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
+                    responseObserver.onNext(response);
+                    System.out.println("Invalid temperature automation request received!");
+                } else if (value.getHour() < 0 || value.getHour() > 24) {
+                    s += value.getHour() + " is an invalid hour!\n";
+                    TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
+                    responseObserver.onNext(response);
+                    System.out.println("Invalid temperature automation request received!");
+                }else if (value.getTemperature()< 5 || value.getTemperature() > 32){
+                    s += value.getTemperature() + " is an invalid temperature!\n";
+                    TemperatureAutomationResponse response = TemperatureAutomationResponse.newBuilder().setMessage(s).setSuccess(false).build();
+                    responseObserver.onNext(response);
+                    System.out.println("Invalid temperature automation request received!");
+                } else {
+                    String x;
+                    System.out.println("Received automation request received for room: " + value.getRoomId());
+                    s += "Room " + value.getRoomId() + " temperature set to " + value.getTemperature() + " at " + value.getHour() + " o'clock.\n";
+                }
             }
 
             @Override
@@ -155,7 +175,7 @@ public class TemperatureServer extends TemperatureImplBase{
             prop.load(input);
 
             // get the property value and print it out
-            System.out.println("Lighting Service properties:");
+            System.out.println("Temperature Service properties:");
             System.out.println("\t service_type: " + prop.getProperty("service_type"));
             System.out.println("\t service_name: " +prop.getProperty("service_name"));
             System.out.println("\t service_description: " +prop.getProperty("service_description"));
